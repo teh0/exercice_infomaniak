@@ -36,7 +36,7 @@ Pour l'organisation des données, il y aura 4 tables différentes :
 ### 2. L'Application en NodeJS
 
   Pour réaliser cette plateforme, il faut avoir un bon stock de livres dans notre base de donnée. Les remplir un à un représenterait un travail long et compliqué.
-  Plutôt que de faire cela, je me suis aidé de l'API Google Book. En créant une application NodeJS, on peut exploiter cette API Google pour récupérer un échantillon de livre en fonction de la catégorie renseignée dans la requête :
+  Plutôt que de faire cela, je me suis aidé de l'API Google Book. En créant une application NodeJS, on peut exploiter cette API Google pour récupérer un échantillon de livres en fonction de la catégorie renseignée dans la requête :
   
   ```js
   let category = 'Infomaniak';
@@ -56,7 +56,7 @@ Pour l'organisation des données, il y aura 4 tables différentes :
   
   **Structure de l'application**
   
-  Le routing de l'application se fera avec Express. Pour renvoyer les vues côté front, j'utiliserai le système de template [EJS](). Il s'accorde parfaitement avec Express (possibilité d'injecter des variables dans les vues après les avoir traitées côté serveur).
+  Le routing de l'application se fera avec Express. Pour renvoyer les vues côté front, j'utiliserai le système de template [EJS](https://ejs.co/). Il s'accorde parfaitement avec Express (possibilité **d'injecter des variables dans les vues** après les avoir traitées côté serveur).
   
   La structure de l'application ressemblera à celle ci : 
   ```bash
