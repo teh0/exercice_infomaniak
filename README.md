@@ -60,22 +60,30 @@ Pour l'organisation des données, il y aura 4 tables différentes :
   
   La structure de l'application ressemblera à celle ci : 
   ```bash
-  │ server.js
+.
+│   server.js
+│
 │
 ├───public
-│   app.css
+│   ├───css
+│   │       app.css
+│   │
+│   └───img
+├───ressources
+│   └───scss
+│           app.scss
 │
 ├───routes
-│   router.js
+│       index.js
 │
 └───views
-      ├───pages
-      │   index.ejs
-      │   result.ejs
-      │
-      └───partials
-            header.ejs
+    ├───pages
+    │       index.ejs
+    │       validation.ejs
+    │
+    └───partials
+            head.ejs
             script.ejs
 ```
 
-Le fichier ```server.js``` est le noyaux de l'application. Il va permettre de lier toutes les parties grâce à **Express**. Il va initialiser le moteur de template EJS, utiliser le fichier ```router.js```pour assurer les liens entre les pages et va rendre les différentes vues ```.ejs```en front. 
+Le fichier ```server.js``` est le noyaux de l'application. Il va permettre de lier toutes les parties grâce à **Express**. Il va initialiser le moteur de template EJS, utiliser le fichier ```index.js``` du dossier routes pour assurer les liens entre les pages et va rendre les différentes vues ```.ejs``` en front.
