@@ -5,7 +5,12 @@ const mysql = require('mysql');
 
 module.exports = function (app) {
     app.get('/', function (req, res) {
-        res.render('pages/index');
+        let success = 'succès !!';
+        let error = '';
+        res.render('pages/index', {
+            success: success,
+            error: error,
+        });
     });
 
     app.post('/', function (req, res) {
