@@ -59,5 +59,23 @@ Pour l'organisation des données, il y aura 4 tables différentes :
   Le routing de l'application se fera avec Express. Pour renvoyer les vues côté front, j'utiliserai le système de template [EJS](). Il s'accorde parfaitement avec Express (possibilité d'injecter des variables dans les vues après les avoir traitées côté serveur).
   
   La structure de l'application ressemblera à celle ci : 
-  
-  
+  ```bash
+  │ server.js
+│
+├───public
+│   app.css
+│
+├───routes
+│   router.js
+│
+└───views
+      ├───pages
+      │   index.ejs
+      │   result.ejs
+      │
+      └───partials
+            header.ejs
+            script.ejs
+```
+
+Le fichier ```server.js``` est le noyaux de l'application. Il va permettre de lier toutes les parties grâce à **Express**. Il va initialiser le moteur de template EJS, utiliser le fichier ```router.js```pour assurer les liens entre les pages et va rendre les différentes vues ```.ejs```en front. 
