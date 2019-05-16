@@ -1,0 +1,11 @@
+// import config style
+@import "config/reset";
+@import "config/variables";
+@import "config/global";
+
+// import pages style
+@import "pages/home";
+@import "pages/validation";
+
+// import components style
+@import "components/form";
