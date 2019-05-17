@@ -7,11 +7,20 @@
     <h1>Ceci est la page Home</h1>
     <form action="" method="POST">
         <fieldset>
-            <input type="text" name="category" id="category">
-            <input type="text" name="table" id="table">
+            <select name="category">
+                <option value="php">PHP</option>
+                <option value="javascript">JavaScript</option>
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+                <option value="python">Python</option>
+                <option value="nodejs">NodeJs</option>
+            </select>
             <button type="submit">Envoyer</button>
         </fieldset>
     </form>
+    <% if (typeof error !== 'undefined') { %>
+        <h2>error</h2>
+    <% } %>
     <% include ../partials/footer %>
     <% include ../partials/scripts %>
 </body>
