@@ -1,8 +1,36 @@
+// Base
+@import 'base/reset';
+@import 'base/global';
+
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import 'abstracts/fonts';
 
 // Variables
-@import 'variables';
+@import 'abstracts/variables';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// Components
+
+// Pages
+
+//----------- Main
+@import 'pages/home';
+@import 'pages/result_search';
+//----------- Admin
+@import 'pages/admin/backoffice_users';
+@import 'pages/admin/backoffice_books';
+//----------- Auth
+@import 'pages/auth/login';
+@import 'pages/auth/register';
+@import 'pages/auth/verify';
+@import 'pages/auth/passwords/email';
+@import 'pages/auth/passwords/reset';
+//----------- Books
+@import 'pages/books/collection';
+@import 'pages/books/category';
+@import 'pages/books/single';
+@import 'pages/books/edit';
+@import 'pages/books/create';
+//----------- Users
+@import 'pages/users/edit';
+@import 'pages/users/profile';
+

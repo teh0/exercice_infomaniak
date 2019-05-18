@@ -88,12 +88,10 @@ module.exports = function (app) {
                             connection.query(`INSERT INTO ${table} (category_id, title, authors, url_thumbnail, description, pageCount, lang, publishedDate, created_at, updated_at) 
                             VALUES ("${categroyID[category]}", "${element.title}", "${element.authors}", "${element.url_thumbnail}", "${encodeURI(element.description)}", "${element.pageCount}", "${element.lang}", "${element.publishedDate}", "${moment().format('YYYY-MM-DD HH:mm:ss')}", "${moment().format('YYYY-MM-DD HH:mm:ss')}")`, function (error, results, fields) {
                                 if (error) throw error;
-
-                                
                             });
                         }
                     });
-                    console.log(listNewBooksStored);
+                    //We pass data of new books in view
                     res.render('pages/index', {
                         data: listNewBooksStored,
                     });
