@@ -1,17 +1,22 @@
-// Base
-@import 'base/reset';
-@import 'base/global';
-
 // Fonts
 @import 'abstracts/fonts';
 
 // Variables
 @import 'abstracts/variables';
 
+// Base
+@import 'base/reset';
+@import 'base/global';
+
+
+
 // Components
+//----------- Utils
+@import 'components/utils/wrapper';
+@import 'components/utils/overlay';
+
 
 // Pages
-
 //----------- Main
 @import 'pages/home';
 @import 'pages/result_search';
@@ -33,4 +38,10 @@
 //----------- Users
 @import 'pages/users/edit';
 @import 'pages/users/profile';
+
+// Partials
+@import 'partials/header';
+@import 'partials/side_menu';
+@import 'partials/footer';
+
 

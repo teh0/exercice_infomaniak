@@ -1,0 +1,76 @@
+.app-header {
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+
+    &-container {
+        align-items: center;
+        display: flex;
+        height: $height_header;
+        justify-content: space-between;
+
+        .link-container {
+            align-items: center;
+            display: flex;
+
+            //Login button
+            .link-login {
+                color: grey;
+                font-size: 20px;
+                margin-right: 35px;
+            }
+
+            //Logout button
+            .link-logout {
+                color: black;
+                font-size: 15px;
+                font-weight: bold;
+                margin-right: 35px;
+                text-decoration: none;
+            }
+
+            //Profile button
+            .link-profile {
+                color: $pink;
+                font-size: 15px;
+                font-weight: bold;
+                margin-right: 35px;
+            }
+
+            //Register button
+            .link-register {
+                background-color: $pink;
+                border-radius: 4px;
+                color: white;
+                display: block;
+                font-size: 20px;
+                padding: 10px 15px;
+                text-decoration: none;
+            }
+
+            //Image profile
+            .img-profile-container {
+                border-radius: 50%;
+                overflow: hidden;
+                img {
+                    height: 60px;
+                    width: 60px;
+                }
+            }
+
+            //Backoffice button
+            .link-backoffice {
+                background-color: $pink;
+                border-radius: 4px;
+                color: white;
+                display: block;
+                font-size: 15px;
+                margin-right: 35px;
+                padding: 10px 15px;
+                text-decoration: none;
+            }
+        }
+
+    }
+}

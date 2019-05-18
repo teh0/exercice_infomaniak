@@ -1,10 +1,14 @@
 <html>
-@include('partials.head')
+
+<head>
+    @include('partials.head')
+</head>
+
 <body>
-    <div class="app-container">
-        @include('partials.header')
-        @yield('app_page')
-    </div>
+    <div class="app-page">
     @include('partials.header')
+    @yield('app_container')
+    </div>
 </body>
+
 </html>

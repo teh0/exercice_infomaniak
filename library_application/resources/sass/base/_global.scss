@@ -1,0 +1,10 @@
+body {
+    font-family: $main_font;
+}
+
+.app-container {
+    padding-top: $height_header;
+    box-sizing: border-box;
+    background-color: $light_grey;
+    min-height: 100vh;
+}

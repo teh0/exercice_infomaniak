@@ -1,0 +1,68 @@
+.app-container[data-page="home"] {
+    align-items: center;
+    background-image: url('../img/bck_book.jpg');
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+
+    .home-overlay {
+        background-color: black;
+        opacity: 0.4;
+    }
+
+    section {
+        position: relative;
+        text-align: center;
+        z-index: 1;
+
+        .home-message {
+            color: white;
+            font-size: 45px;
+        }
+
+        form {
+            display: flex;
+            margin: 40px 0;
+            width: 640px;
+
+            input[type="text"] {
+                border: none;
+                box-sizing: border-box;
+                color: $grey;
+                font-family: $main_font;
+                font-size: 20px;
+                outline: none;
+                padding: 20px;
+                width: 100%;
+
+                &::placeholder {
+                    color: $grey;
+                    font-family: $main_font;
+                    font-size: 20px;
+
+                }
+            }
+
+            button[type="submit"] {
+                background-color: $pink;
+                border: none;
+                cursor: pointer;
+                img {
+                    box-sizing: border-box;
+                    height: 20px;
+                    margin: 20px;
+                    width: 20px;
+                }
+            }
+        }
+
+        .link-book-collection {
+            background-color: black;
+            box-sizing: border-box;
+            color: white;
+            padding: 15px 30px;
+        }
+    }
+
+}
