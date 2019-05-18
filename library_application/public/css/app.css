@@ -45,6 +45,59 @@ body {
   background-color: #F5F2F2;
   min-height: 100vh; }
 
+.sharp {
+  color: #FB503B; }
+
+.form-borrowell {
+  background-color: white;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 1px 3px 1px rgba(60, 64, 67, 0.149);
+  padding: 30px 15px;
+  width: 400px; }
+  .form-borrowell .form-header {
+    margin-bottom: 50px; }
+    .form-borrowell .form-header p {
+      color: #7B7271;
+      font-size: 35px;
+      font-weight: bold; }
+  .form-borrowell .block-form {
+    padding: 5px;
+    margin-bottom: 25px; }
+    .form-borrowell .block-form span.error-message {
+      display: inline-block;
+      font-size: 11px;
+      padding-bottom: 5px; }
+    .form-borrowell .block-form input {
+      border: none;
+      border: 1px solid rgba(123, 144, 113, 0.3);
+      box-sizing: border-box;
+      color: black;
+      font-size: 20px;
+      outline: none;
+      padding: 15px;
+      width: 100%; }
+      .form-borrowell .block-form input::placeholder {
+        color: #7B7271;
+        font-size: 20px; }
+    .form-borrowell .block-form input.invalid {
+      border: 1px solid #FB503B; }
+  .form-borrowell button[type="submit"] {
+    background-color: #FB503B;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 20px;
+    margin-top: 10px;
+    outline: none;
+    padding: 10px;
+    width: 100%; }
+  .form-borrowell .link-forgot-password {
+    color: black;
+    display: inline-block;
+    font-size: 13px;
+    text-align: center;
+    width: 100%; }
+
 .app-wrapper {
   display: block;
   margin: 0 auto;
@@ -110,6 +163,42 @@ body {
       color: white;
       padding: 15px 30px; }
 
+.app-container[data-page="login"] {
+  align-items: center;
+  background-image: url("../img/bck_book.jpg");
+  display: flex;
+  justify-content: center; }
+  .app-container[data-page="login"] .login-overlay {
+    background-color: black;
+    opacity: 0.3; }
+  .app-container[data-page="login"] form {
+    position: relative;
+    z-index: 1; }
+
+.app-container[data-page="register"] {
+  align-items: center;
+  background-image: url("../img/bck_book.jpg");
+  display: flex;
+  justify-content: center; }
+  .app-container[data-page="register"] .login-overlay {
+    background-color: black;
+    opacity: 0.3; }
+  .app-container[data-page="register"] form {
+    position: relative;
+    z-index: 1; }
+
+.app-container[data-page="reset-password"] {
+  align-items: center;
+  background-image: url("../img/bck_book.jpg");
+  display: flex;
+  justify-content: center; }
+  .app-container[data-page="reset-password"] .login-overlay {
+    background-color: black;
+    opacity: 0.3; }
+  .app-container[data-page="reset-password"] form {
+    position: relative;
+    z-index: 1; }
+
 .app-header {
   background-color: white;
   position: fixed;
@@ -120,6 +209,8 @@ body {
     display: flex;
     height: 12.5vh;
     justify-content: space-between; }
+    .app-header-container img {
+      height: 40px; }
     .app-header-container .link-container {
       align-items: center;
       display: flex; }

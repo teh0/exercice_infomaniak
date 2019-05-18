@@ -1,6 +1,29 @@
-@extends('layouts.app')
+@extends('templates.app')
 
-@section('content')
+@section('app_container')
+<div data-page="reset-password" class="app-container">
+<div class="login-overlay overlay"></div>
+    <form action="{{ route('password.email') }}" method="POST" class="form-borrowell">
+        @csrf
+
+        <div class="form-header">
+            <p><span class="sharp">#</span>&nbsp;Vérification par mail</p>
+        </div>
+        <!-- Email block -->
+        <div class="block-form">
+            @error('email')
+            <span class="error-message">{{ $message }}</span>
+            @enderror
+            <input type="email" placeholder="E-mail" class="form-control @error('email') invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+        </div>
+
+        <!-- Button submit -->
+        <button type="submit" class="btn btn-primary">Envoyer le lien de réinitialisation</button>
+    </form>
+</div>
+@endsection
+
+<!-- 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -43,5 +66,5 @@
             </div>
         </div>
     </div>
-</div>
-@endsection
+</div> -->
+

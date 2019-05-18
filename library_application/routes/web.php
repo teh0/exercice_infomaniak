@@ -13,6 +13,10 @@
 
 Route::get('/', function () {
     return view('home');
+})->name('home');
+
+Route::prefix('book')->group(function () {
+    Route::get('/collection', 'CategoryController@index')->name('collection');
 });
 
 Auth::routes();

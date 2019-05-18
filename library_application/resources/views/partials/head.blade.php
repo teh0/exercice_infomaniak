@@ -4,5 +4,5 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <title>Document</title>
+        <title>Borrowell - Plateforme d'emprunt de livres</title>
     </head>
