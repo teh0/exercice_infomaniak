@@ -1,0 +1,112 @@
+.app-container {
+    box-sizing: border-box;
+    display: flex;
+    height: 100%;
+    left: 0;
+    padding-top: 10vh;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    .left {
+        align-items: center;
+        background-color: white;
+        color: $grey;
+        display: flex;
+        justify-content: center;
+        flex: 1;
+
+        &-container {
+            padding: 0 50px;
+            p {
+                font-size: 25px;
+                margin-bottom: 15px;
+                text-align: center;
+            }
+
+            form {
+                display: flex;
+                width: 100%;
+
+                select {
+                    border: 1px solid rgba(112,112,112,0.2);
+                    font-family: $font_main;
+                    font-size: 20px;
+                    font-weight: bold;
+                    outline: none;
+                    width: 100%;
+
+                    option {
+                        &:hover {
+                            background-color: $pink;
+                        }
+                    }
+                }
+
+                button[type="submit"]{
+                    background-color: $pink;
+                    border: none;
+                    color: white;
+                    font-family: $font_main;
+                    font-size: 20px;
+                    outline: none;
+                    padding: 10px 20px;
+                }
+            }
+        }
+
+
+    }
+
+    .right {
+        background-color: $pink;
+        box-sizing: border-box;
+        display: flex;
+        flex: 1.5;
+        padding: 40px;
+        overflow-y: auto;
+
+        &-container {
+            width: 100%;
+
+            &>p {
+                font-size: 25px;
+                margin-bottom: 20px;
+                span {
+                    font-weight: bold;
+                }
+            }
+
+            .block-book {
+                background-color: white;
+                box-sizing: border-box;
+                color: $grey;
+                display: flex;
+                margin: 5px 0;
+                padding: 10px 25px;
+
+                img {
+                    display: block;
+                    margin-right: 40px;
+                }
+
+                h2 {
+                    color: black;
+                    font-size: 25px;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                }
+
+                ul {
+                    li {
+                        padding: 5px;
+                        span {
+                            color: black;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

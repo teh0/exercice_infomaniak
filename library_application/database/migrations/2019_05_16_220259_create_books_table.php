@@ -25,7 +25,6 @@ class CreateBooksTable extends Migration
             $table->integer('pageCount');
             $table->string('lang');
             $table->string('publishedDate');
-            $table->integer('price');
             $table->timestamps();
         });
     }

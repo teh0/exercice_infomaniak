@@ -2,6 +2,8 @@
 
 const axios = require('axios');
 const mysql = require('mysql');
+var moment = require('moment');
+
 
 module.exports = function (app) {
 
@@ -36,12 +38,12 @@ module.exports = function (app) {
         let retrieveCurrentBookStored = `SELECT * FROM ${table}`;
 
 
-        // 1) First step, retrieve current books stored in database in stock them in array (listTitleBookStored)
+        // 1) First step, retrieve current books stored in database in stock them in array (listBookStored)
         connection.query(retrieveCurrentBookStored, function (error, results, fields) {
             if (error) throw error;
-            let listTitleBookStored = [];
+            let listBookStored = [];
             results.forEach(element => {
-                listTitleBookStored.push(element.title);
+                listBookStored.push(element);
             });
 
             // 2) Second step, retrieve data from GoogleBook API in relation to category pass by form
@@ -49,7 +51,7 @@ module.exports = function (app) {
                 .then(function (response) {
                     // Target book data from axios request
                     let dataBooks = response.data.items;
-                    let validBooks = [];
+                    let listValidBooks = [];
                     dataBooks.forEach(element => {
 
                         let newdataBook = {
@@ -64,16 +66,38 @@ module.exports = function (app) {
                         if (element.volumeInfo.imageLinks) {
                             newdataBook.url_thumbnail = element.volumeInfo.imageLinks.thumbnail;
                         }
-                        // If a value of props is undefined (length != 7), we don't keep the book
-                        if (Object.values(newdataBook).length === 7) {
-                            console.log(newdataBook.title);
-                            validBooks.push(newdataBook);
+                        // If a value of props is undefined or total props number != 7, we don't keep the book
+                        if (Object.values(newdataBook).length === 7 && !Object.values(newdataBook).includes(undefined)) {
+                            listValidBooks.push(newdataBook);
                         }
                     });
-                    //At the step, we have book from database stored in "listTitleBookStored" and book from Google API in "validBooks"
-                    // Now let's compare them to update or create new Book in database
+
+                    //At the step, we have books from database stored in "listBookStored" and book from Google API in "listValidBooks"
+                    // Now let's compare them (in relation to title and description) to update or create new Book in database
+                    let listTitleBookStored = [];
+                    let listDescriptionBookStored = [];
+                    let listNewBooksStored = [];
+                    listBookStored.forEach(element => {
+                        listTitleBookStored.push(element.title);
+                        listDescriptionBookStored.push(element.description);
+                    });
+
+                    listValidBooks.forEach(element => {
+                        if (!listTitleBookStored.includes(element.title) && !listDescriptionBookStored.includes(encodeURI(element.description))) {
+                            listNewBooksStored.push(element);
+                            connection.query(`INSERT INTO ${table} (category_id, title, authors, url_thumbnail, description, pageCount, lang, publishedDate, created_at, updated_at) 
+                            VALUES ("${categroyID[category]}", "${element.title}", "${element.authors}", "${element.url_thumbnail}", "${encodeURI(element.description)}", "${element.pageCount}", "${element.lang}", "${element.publishedDate}", "${moment().format('YYYY-MM-DD HH:mm:ss')}", "${moment().format('YYYY-MM-DD HH:mm:ss')}")`, function (error, results, fields) {
+                                if (error) throw error;
+
+                                
+                            });
+                        }
+                    });
+                    console.log(listNewBooksStored);
+                    res.render('pages/index', {
+                        data: listNewBooksStored,
+                    });
                 });
         });
-        res.render('pages/validation');
     });
 };

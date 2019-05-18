@@ -1,4 +1,132 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
 body {
-  font-family: "Noto Sans", sans-serif; }
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none; }
+
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  font-family: "Noto Sans", sans-serif;
+  overflow: hidden; }
+
+.app-container {
+  box-sizing: border-box;
+  display: flex;
+  height: 100%;
+  left: 0;
+  padding-top: 10vh;
+  position: absolute;
+  top: 0;
+  width: 100%; }
+  .app-container .left {
+    align-items: center;
+    background-color: white;
+    color: #7B7271;
+    display: flex;
+    justify-content: center;
+    flex: 1; }
+    .app-container .left-container {
+      padding: 0 50px; }
+      .app-container .left-container p {
+        font-size: 25px;
+        margin-bottom: 15px;
+        text-align: center; }
+      .app-container .left-container form {
+        display: flex;
+        width: 100%; }
+        .app-container .left-container form select {
+          border: 1px solid rgba(112, 112, 112, 0.2);
+          font-family: "Noto Sans", sans-serif;
+          font-size: 20px;
+          font-weight: bold;
+          outline: none;
+          width: 100%; }
+          .app-container .left-container form select option:hover {
+            background-color: #FB503B; }
+        .app-container .left-container form button[type="submit"] {
+          background-color: #FB503B;
+          border: none;
+          color: white;
+          font-family: "Noto Sans", sans-serif;
+          font-size: 20px;
+          outline: none;
+          padding: 10px 20px; }
+  .app-container .right {
+    background-color: #FB503B;
+    box-sizing: border-box;
+    display: flex;
+    flex: 1.5;
+    padding: 40px;
+    overflow-y: auto; }
+    .app-container .right-container {
+      width: 100%; }
+      .app-container .right-container > p {
+        font-size: 25px;
+        margin-bottom: 20px; }
+        .app-container .right-container > p span {
+          font-weight: bold; }
+      .app-container .right-container .block-book {
+        background-color: white;
+        box-sizing: border-box;
+        color: #7B7271;
+        display: flex;
+        margin: 5px 0;
+        padding: 10px 25px; }
+        .app-container .right-container .block-book img {
+          display: block;
+          margin-right: 40px; }
+        .app-container .right-container .block-book h2 {
+          color: black;
+          font-size: 25px;
+          font-weight: bold;
+          margin-bottom: 10px; }
+        .app-container .right-container .block-book ul li {
+          padding: 5px; }
+          .app-container .right-container .block-book ul li span {
+            color: black;
+            font-weight: bold; }
+
+header {
+  align-items: center;
+  background-color: white;
+  box-sizing: border-box;
+  display: flex;
+  height: 10vh;
+  padding: 20px 35px;
+  position: fixed;
+  z-index: 10;
+  width: 100%; }
+  header img {
+    height: 60px; }
 
 /*# sourceMappingURL=app.css.map */

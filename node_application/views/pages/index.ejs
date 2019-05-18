@@ -4,23 +4,50 @@
 
 <body>
     <% include ../partials/header %>
-    <h1>Ceci est la page Home</h1>
-    <form action="" method="POST">
-        <fieldset>
-            <select name="category">
-                <option value="php">PHP</option>
-                <option value="javascript">JavaScript</option>
-                <option value="html">HTML</option>
-                <option value="css">CSS</option>
-                <option value="python">Python</option>
-                <option value="nodejs">NodeJs</option>
-            </select>
-            <button type="submit">Envoyer</button>
-        </fieldset>
-    </form>
-    <% if (typeof error !== 'undefined') { %>
-        <h2>error</h2>
-    <% } %>
+    <div class="app-container">
+        <div class="left">
+            <div class="left-container">
+                <p>Catégorie de livre à injecter dans la BDD</p>
+                <form action="" method="POST">
+                    <select name="category">
+                        <option value="php">PHP</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="html">HTML</option>
+                        <option value="css">CSS</option>
+                        <option value="python">Python</option>
+                        <option value="nodejs">NodeJs</option>
+                    </select>
+                    <button type="submit">Choisir</button>
+                </form>
+            </div>
+        </div>
+        <div class="right">
+            <div class="right-container">   
+                <% if (typeof data !== 'undefined') { %>
+                    <% if (data.length === 0) { %>
+                    <p>Aucun livre n'a été ajouté</p>
+                    <% } else{%>
+                        <p><span><%= data.length  %></span> livres ont été ajoutés</p>
+                        <% data.forEach((book) => { %>
+                            <div class="block-book">
+                                <img src="<%= book.url_thumbnail %>" alt="">
+                                <div>
+                                    <h2><%= book.title %></h2>
+                                    <ul>
+                                        <li><span>Auteur(s) :</span>  <%= book.authors %></li>
+                                        <li><span>Nb de pages :</span> <%= book.pageCount %></li>
+                                        <li><span>Date de publication :</span> <%= book.publishedDate %></li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        <% }) %>
+                    <% } %>
+                <% } %>
+            </div>
+            </div>
+        </div>
+    </div>
     <% include ../partials/footer %>
     <% include ../partials/scripts %>
 </body>
