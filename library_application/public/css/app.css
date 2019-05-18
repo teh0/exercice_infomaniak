@@ -199,6 +199,16 @@ body {
     position: relative;
     z-index: 1; }
 
+.app-container[data-page="book-collection"] {
+  align-items: center;
+  display: flex;
+  justify-content: center; }
+  .app-container[data-page="book-collection"] section {
+    display: flex;
+    flex-wrap: wrap; }
+    .app-container[data-page="book-collection"] section .block-category {
+      width: 30%; }
+
 .app-header {
   background-color: white;
   position: fixed;

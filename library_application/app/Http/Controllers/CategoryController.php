@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Book;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -15,6 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
+        // $categories->makeHidden('books')->toArray();
 
         return view('books.collection', compact('categories'));
     }
@@ -35,9 +37,8 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
     }
 
     /**
@@ -46,9 +47,10 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($slug_cat)
     {
-        //
+        $category = Category::where('slug', $slug_cat)->first();
+        return view('books.category',compact('category'));
     }
 
     /**

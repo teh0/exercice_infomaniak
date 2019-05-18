@@ -47,7 +47,7 @@ module.exports = function (app) {
             });
 
             // 2) Second step, retrieve data from GoogleBook API in relation to category pass by form
-            axios.get(`https://www.googleapis.com/books/v1/volumes?q=${category}&maxResults=40`)
+            axios.get(`https://www.googleapis.com/books/v1/volumes?q=${category}&maxResults=15`)
                 .then(function (response) {
                     // Target book data from axios request
                     let dataBooks = response.data.items;

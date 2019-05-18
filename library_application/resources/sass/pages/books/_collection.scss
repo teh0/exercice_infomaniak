@@ -1,0 +1,16 @@
+.app-container[data-page="book-collection"] {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    section {
+
+        display: flex;
+        flex-wrap: wrap;
+
+        .block-category {
+            width: 30%;
+        }
+    }
+
+}
