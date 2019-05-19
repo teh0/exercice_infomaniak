@@ -5,7 +5,8 @@
     <section class="app-wrapper">
         @foreach($categories as $category)
             <a class="block-category" href="{{ route('category', ['slug_categ' => $category->slug ]) }}">
-                <h1>{{ $category->name }}</h1>
+                <img src="{{ asset('img/'.$category->slug.'.png') }}" alt="">
+                <p class="title-category">{{ $category->name }}</p>
             </a>
         @endforeach
     </section>

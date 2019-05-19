@@ -1,0 +1,56 @@
+.app-container[data-page="book-category"] {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .header-result {
+        color: $grey;
+        font-size: 30px;
+        padding: 50px 0;
+
+        .count-book {
+            color: black;
+            font-weight: bold;
+        }
+
+        .title-category {
+            color: black;
+            font-weight: bold;
+        }
+    }
+
+    section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        a.block-book {
+            align-items: center;
+            background-color: white;
+            box-sizing: border-box;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 25px;
+            padding: 10px;
+            text-decoration: none;
+            width: 250px;
+
+            img {
+                filter: grayscale(1);
+                margin-bottom: 20px;
+                transition: all 0.2s ease-out;
+            }
+
+            &:hover {
+                img {
+                    filter: grayscale(0);
+                }
+            }
+
+        }
+    }
+
+}

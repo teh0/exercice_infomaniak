@@ -44,9 +44,10 @@ class BookController extends Controller
      * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function show(Book $book)
+    public function show($slug_categ, $id_book)
     {
-        dd($book);
+        $book = Book::find($id_book);
+        return view('books.single', compact('book'));
     }
 
     /**
@@ -57,7 +58,7 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        
     }
 
     /**

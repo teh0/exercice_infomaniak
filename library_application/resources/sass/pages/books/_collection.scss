@@ -4,12 +4,36 @@
     justify-content: center;
 
     section {
-
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
 
-        .block-category {
-            width: 30%;
+        a.block-category {
+            align-items: center;
+            background-color: white;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 25px;
+            padding: 65px;
+            text-decoration: none;
+
+            img {
+                filter: grayscale(1);
+                margin-bottom: 20px;
+                transition: all 0.2s ease-out;
+            }
+
+            p.title-category {
+                font-size: 25px;
+            }
+
+            &:hover {
+                img {
+                    filter: grayscale(0);
+                }
+            }
         }
     }
 

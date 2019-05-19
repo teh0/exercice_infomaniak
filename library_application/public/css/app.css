@@ -205,9 +205,64 @@ body {
   justify-content: center; }
   .app-container[data-page="book-collection"] section {
     display: flex;
-    flex-wrap: wrap; }
-    .app-container[data-page="book-collection"] section .block-category {
-      width: 30%; }
+    flex-wrap: wrap;
+    justify-content: center; }
+    .app-container[data-page="book-collection"] section a.block-category {
+      align-items: center;
+      background-color: white;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 25px;
+      padding: 65px;
+      text-decoration: none; }
+      .app-container[data-page="book-collection"] section a.block-category img {
+        filter: grayscale(1);
+        margin-bottom: 20px;
+        transition: all 0.2s ease-out; }
+      .app-container[data-page="book-collection"] section a.block-category p.title-category {
+        font-size: 25px; }
+      .app-container[data-page="book-collection"] section a.block-category:hover img {
+        filter: grayscale(0); }
+
+.app-container[data-page="book-category"] {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  .app-container[data-page="book-category"] .header-result {
+    color: #7B7271;
+    font-size: 30px;
+    padding: 50px 0; }
+    .app-container[data-page="book-category"] .header-result .count-book {
+      color: black;
+      font-weight: bold; }
+    .app-container[data-page="book-category"] .header-result .title-category {
+      color: black;
+      font-weight: bold; }
+  .app-container[data-page="book-category"] section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; }
+    .app-container[data-page="book-category"] section a.block-book {
+      align-items: center;
+      background-color: white;
+      box-sizing: border-box;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 25px;
+      padding: 10px;
+      text-decoration: none;
+      width: 250px; }
+      .app-container[data-page="book-category"] section a.block-book img {
+        filter: grayscale(1);
+        margin-bottom: 20px;
+        transition: all 0.2s ease-out; }
+      .app-container[data-page="book-category"] section a.block-book:hover img {
+        filter: grayscale(0); }
 
 .app-header {
   background-color: white;
