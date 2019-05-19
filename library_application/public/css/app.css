@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Karla:400,700&display=swap");
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -37,7 +38,7 @@ table {
   border-spacing: 0; }
 
 body {
-  font-family: "Noto Sans", sans-serif; }
+  font-family: "Karla", sans-serif; }
 
 .app-container {
   padding-top: 12.5vh;
@@ -85,7 +86,7 @@ body {
     border: none;
     color: white;
     cursor: pointer;
-    font-family: "Noto Sans", sans-serif;
+    font-family: "Karla", sans-serif;
     font-size: 20px;
     margin-top: 10px;
     outline: none;
@@ -139,14 +140,14 @@ body {
         border: none;
         box-sizing: border-box;
         color: #7B7271;
-        font-family: "Noto Sans", sans-serif;
+        font-family: "Karla", sans-serif;
         font-size: 20px;
         outline: none;
         padding: 20px;
         width: 100%; }
         .app-container[data-page="home"] section form input[type="text"]::placeholder {
           color: #7B7271;
-          font-family: "Noto Sans", sans-serif;
+          font-family: "Karla", sans-serif;
           font-size: 20px; }
       .app-container[data-page="home"] section form button[type="submit"] {
         background-color: #FB503B;
@@ -264,13 +265,61 @@ body {
       .app-container[data-page="book-category"] section a.block-book:hover img {
         filter: grayscale(0); }
 
-.app-container[data-page="book-single"] section {
-  margin-top: 50px; }
-  .app-container[data-page="book-single"] section .book-title {
-    font-size: 40px;
-    font-weight: bold; }
-  .app-container[data-page="book-single"] section .book-description {
-    line-height: 20px; }
+.app-container[data-page="book-single"] {
+  align-content: flex-start;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  height: 100vh; }
+  .app-container[data-page="book-single"] .thumbnail-container {
+    flex: 1;
+    overflow: hidden;
+    position: relative; }
+    .app-container[data-page="book-single"] .thumbnail-container .overlay-thumbnail {
+      background-color: black;
+      opacity: 0.4; }
+    .app-container[data-page="book-single"] .thumbnail-container img {
+      height: 110%;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%); }
+  .app-container[data-page="book-single"] .info-container {
+    box-sizing: border-box;
+    flex: 1.5;
+    overflow: auto;
+    padding: 60px;
+    width: 50%; }
+    .app-container[data-page="book-single"] .info-container .book-title {
+      font-size: 35px;
+      font-weight: bold;
+      margin-bottom: 50px; }
+    .app-container[data-page="book-single"] .info-container .description-block {
+      margin-bottom: 20px; }
+      .app-container[data-page="book-single"] .info-container .description-block span {
+        display: inline-block;
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 8px; }
+      .app-container[data-page="book-single"] .info-container .description-block p {
+        line-height: 18px;
+        max-width: 70%; }
+    .app-container[data-page="book-single"] .info-container .link-borrow {
+      border-radius: 4px;
+      color: white;
+      display: inline-block;
+      margin-top: 10px;
+      padding: 15px;
+      text-decoration: none; }
+      .app-container[data-page="book-single"] .info-container .link-borrow[data-state="noBorrowed"] {
+        background-color: #FB503B; }
+      .app-container[data-page="book-single"] .info-container .link-borrow[data-state="Borrowed"] {
+        background-color: #7B7271;
+        opacity: 0.9; }
+    .app-container[data-page="book-single"] .info-container .link-login {
+      font-weight: bold;
+      margin-top: 10px; }
+      .app-container[data-page="book-single"] .info-container .link-login a {
+        color: #FB503B; }
 
 .app-header {
   background-color: white;
