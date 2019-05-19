@@ -24,8 +24,10 @@
     }
 
     .info-container {
-        box-sizing: border-box;
+        align-items: flex-start;
+        display: flex;
         flex: 1.5;
+        flex-direction: column;
         overflow: auto;
         padding: 60px;
         width: 50%;
@@ -54,7 +56,6 @@
 
         //@Auth
         .link-borrow {
-            border-radius: 4px;
             color: white;
             display: inline-block;
             margin-top: 10px;
@@ -70,6 +71,10 @@
                 opacity: 0.9;
             }
         }
+        .limit-book, .owner-message {
+            color: $pink;
+            font-weight: bold;
+        }
 
         //@Guest
         .link-login {
@@ -79,6 +84,10 @@
             a {
                 color: $pink;
             }
+        }
+
+        .back-button {
+            margin-top: 40px;
         }
 
     }

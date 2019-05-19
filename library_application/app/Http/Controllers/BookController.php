@@ -4,17 +4,45 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Update isBorrowed and user_id of Book send in param.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function borrow($id_book) {
+        $user = Auth::user();
+        $user->countBooks++;
+        $book=Book::find($id_book);
+        $book->isBorrowed=1;
+        $book->user_id=$user->id;
+        $book->save();
+        $user->save();
+
+        return redirect('book/collection/'.$book->category->slug.'/'.$book->id);
+        
+    }
+
+    /**
+     * Update isBorrowed and user_id of Book send in param.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function unborrow($id_book) {
+        $user = Auth::user();
+        $user->countBooks--;
+
+        $book=Book::find($id_book);
+        $book->isBorrowed=0;
+        $book->user_id=0;
+
+        $book->save();
+        $user->save();
+
+        return redirect('user/profile');
     }
 
     /**

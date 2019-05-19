@@ -21,64 +21,31 @@
             <p>{{ urldecode($book->pageCount) }}</p>
         </div>
         @if (!$book->isBorrowed)
-        @auth
-        <a data-state="noBorrowed" class="link-borrow" href="">Empreinter ce livre</a>
-        @endauth
+            @auth
+                @if (Auth::user()->countBooks>=3)
+                    <span class="limit-book">Vous ne pouvez pas empreinter plus de 3 livres</span>
+                @else
+                    <a data-state="noBorrowed" class="link-borrow" href="" onclick="event.preventDefault(); document.getElementById('borrow-form').submit();">Empreinter ce livre</a>
+                    <form id="borrow-form" action="{{ route('borrowBook', ['id_book' => $book->id]) }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                @endif
+            @endauth
 
         @else
-        @auth
-        <a data-state="Borrowed" class="link-borrow" href="" onclick="event.preventDefault();">Ce livre est déjà
-            empreinté</a>
-        @endauth
+            @auth
+                @if (Auth::user()->id == $book->user_id)
+                    <span class="owner-message">Vous possédez ce livre</span>
+                @else
+                <a data-state="Borrowed" class="link-borrow" href="" onclick="event.preventDefault();">Ce livre est déjà
+                        empreinté</a>
+                @endif
+            @endauth
         @endif
         @guest
         <p class="link-login"><a href="{{ route('login') }}">Identifiez-vous</a> si vous voulez emprunter ce livre</p>
         @endguest
+        <a class="back-button" href="{{ route('category',['slug_category' => $book->category->slug]) }}"><img src="{{ asset('img/svg/left-arrow.svg') }}" alt=""><span>Revenir aux livres {{$book->category->name}}</span></a>
     </div>
-
-
-
-    {{-- <section class="app-wrapper">
-        <p class="book-title">{{ $book->title }}</p>
-    <div class="info-container">
-        <!-- Thumbnail -->
-        <div class="thumb-block">
-            <img class="book-thumb" src="{{ $book->large_thumbnail }}" alt="">
-            @if (!$book->isBorrowed)
-            @auth
-            <a data-state="noBorrowed" class="link-borrow" href="">Empreinter ce livre</a>
-            @endauth
-
-            @else
-            @auth
-            <a data-state="Borrowed" class="link-borrow" href="" onclick="event.preventDefault();">Ce livre est déjà
-                empreinté</a>
-            @endauth
-            @endif
-            @guest
-            <p class="link-login"><a href="{{ route('login') }}">Identifiez-vous</a> si vous voulez emprunter ce livre
-            </p>
-            @endguest
-
-        </div>
-        <!-- Text description container -->
-        <div class="text-description">
-            <div class="text-description-block">
-                <span>Description</span>
-                <p>{{ urldecode($book->description) }}</p>
-            </div>
-
-            <div class="text-description-block">
-                <span>Auteur</span>
-                <p>{{ $book->authors }}</p>
-            </div>
-
-            <div class="text-description-block">
-                <span>Nombre de page</span>
-                <p>{{ $book->pageCount }}</p>
-            </div>
-        </div>
-    </div>
-    </section> --}}
 </div>
 @endsection
