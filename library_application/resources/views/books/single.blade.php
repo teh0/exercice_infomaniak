@@ -3,10 +3,11 @@
 @section('app_container')
 <div data-page="book-single" class="app-container">
     <div class="thumbnail-container">
-        <img src="{{ $book->large_thumbnail }}" alt="Page de couverture du livre {{ $book->title }}">
         <div class="overlay-thumbnail overlay"></div>
+        <img src="{{ $book->large_thumbnail }}" alt="Page de couverture du livre {{ $book->title }}">
     </div>
     <div class="info-container">
+            <a class="back-button" href="{{ route('category',['slug_category' => $book->category->slug]) }}"><img src="{{ asset('img/svg/left-arrow.svg') }}" alt=""><span>Revenir aux livres {{$book->category->name}}</span></a>
         <p class="book-title"><span class="sharp">#</span> {{ $book->title }}</p>
         <div class="description-block">
             <span>Description</span>
@@ -45,7 +46,6 @@
         @guest
         <p class="link-login"><a href="{{ route('login') }}">Identifiez-vous</a> si vous voulez emprunter ce livre</p>
         @endguest
-        <a class="back-button" href="{{ route('category',['slug_category' => $book->category->slug]) }}"><img src="{{ asset('img/svg/left-arrow.svg') }}" alt=""><span>Revenir aux livres {{$book->category->name}}</span></a>
     </div>
 </div>
 @endsection
