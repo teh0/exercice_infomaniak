@@ -4,6 +4,10 @@
     flex-direction: column;
     justify-content: center;
 
+    .back-button {
+        margin-top: 40px;
+    }
+
     .header-result {
         color: $grey;
         font-size: 30px;

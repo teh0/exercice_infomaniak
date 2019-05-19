@@ -26,6 +26,7 @@ Route::prefix('book')->group(function () {
 
 Route::prefix('user')->group(function () {
     Route::get('/profile', 'UsersController@profile')->name('profile');
+    Route::post('/profile', 'UsersController@update_avatar')->name('update_avatar');
 });
 
 Auth::routes();

@@ -244,6 +244,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center; }
+  .app-container[data-page="book-category"] .back-button {
+    margin-top: 40px; }
   .app-container[data-page="book-category"] .header-result {
     color: #7B7271;
     font-size: 30px;
