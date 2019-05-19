@@ -47,7 +47,7 @@ module.exports = function (app) {
             });
 
             // 2) Second step, retrieve data from GoogleBook API in relation to category pass by form
-            axios.get(`https://www.googleapis.com/books/v1/volumes?q=${category}&maxResults=15`)
+            axios.get(`https://www.googleapis.com/books/v1/volumes?q=${category}&maxResults=40`)
                 .then(function (response) {
                     // Target book data from axios request
                     let dataBooks = response.data.items;
@@ -64,10 +64,12 @@ module.exports = function (app) {
 
                         };
                         if (element.volumeInfo.imageLinks) {
-                            newdataBook.url_thumbnail = element.volumeInfo.imageLinks.thumbnail;
+                            newdataBook.small_thumbnail = element.volumeInfo.imageLinks.thumbnail;
                         }
                         // If a value of props is undefined or total props number != 7, we don't keep the book
                         if (Object.values(newdataBook).length === 7 && !Object.values(newdataBook).includes(undefined)) {
+                            let thumb_regex = /zoom=1/gi;
+                            newdataBook.large_thumbnail = newdataBook.small_thumbnail.replace(thumb_regex, 'zoom=0');
                             listValidBooks.push(newdataBook);
                         }
                     });
@@ -85,8 +87,8 @@ module.exports = function (app) {
                     listValidBooks.forEach(element => {
                         if (!listTitleBookStored.includes(element.title) && !listDescriptionBookStored.includes(encodeURI(element.description))) {
                             listNewBooksStored.push(element);
-                            connection.query(`INSERT INTO ${table} (category_id, title, authors, url_thumbnail, description, pageCount, lang, publishedDate, created_at, updated_at) 
-                            VALUES ("${categroyID[category]}", "${element.title}", "${element.authors}", "${element.url_thumbnail}", "${encodeURI(element.description)}", "${element.pageCount}", "${element.lang}", "${element.publishedDate}", "${moment().format('YYYY-MM-DD HH:mm:ss')}", "${moment().format('YYYY-MM-DD HH:mm:ss')}")`, function (error, results, fields) {
+                            connection.query(`INSERT INTO ${table} (category_id, title, authors, small_thumbnail, large_thumbnail, description, pageCount, lang, publishedDate, created_at, updated_at) 
+                            VALUES ("${categroyID[category]}", "${element.title}", "${element.authors}", "${element.small_thumbnail}", "${element.large_thumbnail}", "${encodeURI(element.description)}", "${element.pageCount}", "${element.lang}", "${element.publishedDate}", "${moment().format('YYYY-MM-DD HH:mm:ss')}", "${moment().format('YYYY-MM-DD HH:mm:ss')}")`, function (error, results, fields) {
                                 if (error) throw error;
                             });
                         }

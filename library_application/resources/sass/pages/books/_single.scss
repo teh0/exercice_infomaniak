@@ -1,0 +1,14 @@
+.app-container[data-page="book-single"] {
+
+    section {
+        margin-top: 50px;
+        .book-title {
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .book-description {
+            line-height: 20px;
+        }
+    }
+}

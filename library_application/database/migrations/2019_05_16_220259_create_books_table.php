@@ -19,7 +19,8 @@ class CreateBooksTable extends Migration
             $table->integer('category_id')->nullable()->unsigned();
             $table->string('title');
             $table->string('authors');
-            $table->string('url_thumbnail');
+            $table->string('small_thumbnail');
+            $table->string('large_thumbnail');
             $table->boolean('isBorrowed')->default(false);
             $table->text('description');
             $table->integer('pageCount');
