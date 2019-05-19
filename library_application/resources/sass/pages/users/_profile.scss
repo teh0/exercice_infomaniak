@@ -1,0 +1,87 @@
+.app-container[data-page="profile"] {
+    section {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 50px;
+
+        .user-infos {
+            align-items: flex-start;
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            .header-user-infos {
+                font-size: 35px;
+                margin-bottom: 20px;
+            }
+
+            form {
+                background-color: white;
+                display:  inline-flex;
+                margin-top: 10px;
+
+                label {
+                    background-color: $pink;
+                    color: white;
+                    cursor: pointer;
+                    font-weight: bold;
+                    padding: 10px;
+                }
+                input[type="file"] {
+                    display: none;
+                }
+                input[type="submit"] {
+                    background-color: transparent;
+                    border: none;
+                    cursor: pointer;
+                    font-family: $main_font;
+                    font-weight: bold;
+                    outline: none;
+                }
+            }
+        }
+
+        .user-borrow {
+            align-items: flex-start;
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+
+            .header-user-borrow {
+                font-size: 35px;
+                margin-bottom: 20px;
+            }
+
+            .list-borrow-book {
+                display: flex;
+                margin-bottom: 20px;
+                .block-borrow-book {
+                    align-items: center;
+                    background-color: white;
+                    padding: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    margin: 10px;
+
+                    img {
+                        margin-bottom: 10px;
+                    }
+
+                    a {
+                        color: black;
+                        font-weight: bold;
+                        text-decoration: none;
+                    }
+                }
+            }
+            .book-credit {
+                span {
+                    font-weight: bold;
+                }
+            }
+            .back-button {
+                margin-top: 40px;
+            }
+        }
+    }
+}

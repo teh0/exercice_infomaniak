@@ -342,6 +342,67 @@ body {
       .app-container[data-page="book-single"] .info-container .link-login a {
         color: #FB503B; }
 
+.app-container[data-page="profile"] section {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px; }
+  .app-container[data-page="profile"] section .user-infos {
+    align-items: flex-start;
+    display: flex;
+    flex: 1;
+    flex-direction: column; }
+    .app-container[data-page="profile"] section .user-infos .header-user-infos {
+      font-size: 35px;
+      margin-bottom: 20px; }
+    .app-container[data-page="profile"] section .user-infos form {
+      background-color: white;
+      display: inline-flex;
+      margin-top: 10px; }
+      .app-container[data-page="profile"] section .user-infos form label {
+        background-color: #FB503B;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+        padding: 10px; }
+      .app-container[data-page="profile"] section .user-infos form input[type="file"] {
+        display: none; }
+      .app-container[data-page="profile"] section .user-infos form input[type="submit"] {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-family: "Karla", sans-serif;
+        font-weight: bold;
+        outline: none; }
+  .app-container[data-page="profile"] section .user-borrow {
+    align-items: flex-start;
+    display: flex;
+    flex: 1;
+    flex-direction: column; }
+    .app-container[data-page="profile"] section .user-borrow .header-user-borrow {
+      font-size: 35px;
+      margin-bottom: 20px; }
+    .app-container[data-page="profile"] section .user-borrow .list-borrow-book {
+      display: flex;
+      margin-bottom: 20px; }
+      .app-container[data-page="profile"] section .user-borrow .list-borrow-book .block-borrow-book {
+        align-items: center;
+        background-color: white;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 10px; }
+        .app-container[data-page="profile"] section .user-borrow .list-borrow-book .block-borrow-book img {
+          margin-bottom: 10px; }
+        .app-container[data-page="profile"] section .user-borrow .list-borrow-book .block-borrow-book a {
+          color: black;
+          font-weight: bold;
+          text-decoration: none; }
+    .app-container[data-page="profile"] section .user-borrow .book-credit span {
+      font-weight: bold; }
+    .app-container[data-page="profile"] section .user-borrow .back-button {
+      margin-top: 40px; }
+
 .app-header {
   background-color: white;
   position: fixed;
