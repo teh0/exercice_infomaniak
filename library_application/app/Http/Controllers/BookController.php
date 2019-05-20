@@ -5,9 +5,18 @@ namespace App\Http\Controllers;
 use App\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class BookController extends Controller
 {
+
+    public function search(Request $request) {
+        $query = $request->input('search-book');
+        $books = DB::table('books')->where('title', 'LIKE', '%' . $query . '%')->paginate(10);
+        return view('books.search', compact('books'));
+        
+    }
+
     /**
      * Update isBorrowed and user_id of Book send in param.
      *

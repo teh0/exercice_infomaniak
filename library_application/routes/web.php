@@ -22,6 +22,7 @@ Route::prefix('book')->group(function () {
 
     Route::post('/borrow/{id_book}', 'BookController@borrow')->name('borrowBook');
     Route::post('/unborrow/{id_book}', 'BookController@unborrow')->name('unborrowBook');
+    Route::post('/search', 'BookController@search')->name('searchBook');
 });
 
 Route::prefix('user')->group(function () {
