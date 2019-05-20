@@ -12,7 +12,7 @@ class BookController extends Controller
 
     public function search(Request $request) {
         $query = $request->input('search-book');
-        $books = DB::table('books')->where('title', 'LIKE', '%' . $query . '%')->paginate(10);
+        $books = Book::with('category')->where('title', 'LIKE', '%' . $query . '%')->paginate(10);
         return view('books.search', compact('books'));
         
     }
