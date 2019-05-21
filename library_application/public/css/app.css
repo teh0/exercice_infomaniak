@@ -67,6 +67,12 @@ body {
       display: inline-block;
       font-size: 11px;
       padding-bottom: 5px; }
+    .form-borrowell .block-form label {
+      display: inline-block;
+      font-size: 15px;
+      font-weight: bold;
+      padding: 5px;
+      width: 100%; }
     .form-borrowell .block-form input {
       border: none;
       border: 1px solid rgba(123, 144, 113, 0.3);
@@ -79,6 +85,8 @@ body {
       .form-borrowell .block-form input::placeholder {
         color: #7B7271;
         font-size: 20px; }
+    .form-borrowell .block-form input[type="file"] {
+      display: none; }
     .form-borrowell .block-form input.invalid {
       border: 1px solid #FB503B; }
   .form-borrowell button[type="submit"] {
@@ -90,6 +98,20 @@ body {
     font-size: 20px;
     margin-top: 10px;
     outline: none;
+    padding: 10px;
+    width: 100%; }
+  .form-borrowell textarea {
+    border: none;
+    border: 1px solid rgba(123, 144, 113, 0.3);
+    font-family: "Karla", sans-serif;
+    font-size: 15px;
+    height: 180px;
+    outline: none;
+    resize: none;
+    width: 100%; }
+  .form-borrowell select {
+    font-family: "Karla", sans-serif;
+    font-size: 15px;
     padding: 10px;
     width: 100%; }
   .form-borrowell .link-forgot-password {
@@ -109,7 +131,7 @@ body {
   bottom: 0;
   height: 100%;
   left: 0;
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
   width: 100%;
@@ -468,6 +490,19 @@ body {
       margin-top: 10px; }
       .app-container[data-page="book-single"] .info-container .link-login a {
         color: #FB503B; }
+
+.app-container[data-page="book-edit"] {
+  align-items: center;
+  background-attachment: fixed;
+  background-image: url("../img/bck_book.jpg");
+  display: flex;
+  justify-content: center; }
+  .app-container[data-page="book-edit"] .data-page-overlay {
+    background-color: black;
+    opacity: 0.5; }
+  .app-container[data-page="book-edit"] form {
+    margin: 60px 0;
+    z-index: 1; }
 
 .app-container[data-page="search"] section .header-search {
   font-size: 30px;

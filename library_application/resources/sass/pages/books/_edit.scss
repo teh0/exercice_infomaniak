@@ -1,0 +1,16 @@
+.app-container[data-page="book-edit"] {
+    .data-page-overlay {
+        background-color: black;
+        opacity: 0.5;
+    }
+    align-items: center;
+    background-attachment: fixed;
+    background-image: url('../img/bck_book.jpg');
+    display: flex;
+    justify-content: center;
+
+    form {
+        margin: 60px 0;
+        z-index: 1;
+    }
+}

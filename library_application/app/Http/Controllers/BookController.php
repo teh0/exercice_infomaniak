@@ -99,7 +99,8 @@ class BookController extends Controller
      */
     public function edit($id_book)
     {
-        
+        $book = Book::find($id_book);
+        return view('books.edit', compact('book'));
     }
 
     /**
@@ -109,9 +110,9 @@ class BookController extends Controller
      * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request, $id_book)
     {
-        //
+        dd($request);
     }
 
     /**
