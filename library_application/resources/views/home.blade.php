@@ -18,7 +18,7 @@
         @if (session()->has('message'))
             <span class="error-message">{{ session('message') }}</span>
         @endif
-        <a class="link-book-collection" href="{{ route('collection') }}">Voir tous les livres</a>
+        <a class="link-book-collection" href="{{ route('collectionBook') }}">Voir tous les livres</a>
     </section>
 </div>
 @endsection
