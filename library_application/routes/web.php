@@ -16,10 +16,21 @@ Route::get('/', function () {
 })->name('home');
 
 Route::prefix('book')->group(function () {
-    Route::get('/collection', 'CategoryController@index')->name('collection');
-    Route::get('/collection/{slug_categ}', 'CategoryController@show')->name('category');
-    Route::get('/collection/{slug_categ}/{id_book}', 'BookController@show')->name('single');
+    Route::get('/collection', 'CategoryController@index')->name('collectionBook');
+    Route::get('/collection/{slug_categ}', 'CategoryController@show')->name('categoryBook');
+    Route::get('/collection/{slug_categ}/{id_book}', 'BookController@show')->name('singleBook');
+    
+    // CRUD LOGIC FOR BOOK
+    //---Add a book 
+    Route::get('/add', 'BookController@create')->name('createBook');
+    Route::post('/add', 'BookController@store')->name('storeBook');
+    //---Edit a book
+    Route::get('/edit/{id_book}', 'BookController@edit')->name('editBook');
+    Route::post('/edit/{id_book}', 'BookController@update')->name('updateBook');
+    //---Delete a book
+    Route::post('/delete/{id_book}', 'BookController@destroy')->name('deleteBook');
 
+    //--- Other actions
     Route::post('/borrow/{id_book}', 'BookController@borrow')->name('borrowBook');
     Route::post('/unborrow/{id_book}', 'BookController@unborrow')->name('unborrowBook');
     Route::post('/search', 'BookController@search')->name('searchBook');

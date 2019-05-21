@@ -204,6 +204,7 @@ body {
         font-weight: bold;
         margin-bottom: 30px; }
     .app-container[data-page="backoffice_users"] .board-backoffice .list-users {
+      box-sizing: border-box;
       width: 100%; }
       .app-container[data-page="backoffice_users"] .board-backoffice .list-users .item-user {
         align-items: center;
@@ -244,6 +245,63 @@ body {
         text-align: center; }
       .app-container[data-page="backoffice_users"] .board-backoffice .count-users .last-user {
         font-weight: bold; }
+
+.app-container[data-page="backoffice_books"] {
+  justify-content: flex-start;
+  display: flex;
+  height: 100vh; }
+  .app-container[data-page="backoffice_books"] .board-backoffice {
+    align-items: flex-start;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    padding: 50px;
+    width: 100%; }
+    .app-container[data-page="backoffice_books"] .board-backoffice .block {
+      background-color: white;
+      border-radius: 4px;
+      margin-bottom: 40px;
+      padding: 20px; }
+      .app-container[data-page="backoffice_books"] .board-backoffice .block h2 {
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 30px; }
+    .app-container[data-page="backoffice_books"] .board-backoffice .list-books {
+      box-sizing: border-box;
+      width: 100%; }
+      .app-container[data-page="backoffice_books"] .board-backoffice .list-books .item-book {
+        align-items: center;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0; }
+        .app-container[data-page="backoffice_books"] .board-backoffice .list-books .item-book * {
+          margin-left: 15px; }
+        .app-container[data-page="backoffice_books"] .board-backoffice .list-books .item-book img {
+          width: 60px; }
+        .app-container[data-page="backoffice_books"] .board-backoffice .list-books .item-book-info {
+          align-items: center;
+          display: flex;
+          font-size: 18px; }
+          .app-container[data-page="backoffice_books"] .board-backoffice .list-books .item-book-info .info-label {
+            color: black;
+            font-weight: bold; }
+        .app-container[data-page="backoffice_books"] .board-backoffice .list-books .item-book-button-block .button-show {
+          background-color: black;
+          border-radius: 4px;
+          color: white;
+          margin-right: 50px;
+          padding: 10px 15px;
+          text-decoration: none; }
+        .app-container[data-page="backoffice_books"] .board-backoffice .list-books .item-book-button-block .button-edit {
+          background-color: #FB503B;
+          border-radius: 4px;
+          color: white;
+          margin-right: 100px;
+          padding: 10px 15px;
+          text-decoration: none; }
 
 .app-container[data-page="login"] {
   align-items: center;

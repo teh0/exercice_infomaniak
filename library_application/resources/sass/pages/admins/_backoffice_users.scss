@@ -26,6 +26,7 @@
         }
 
         .list-users {
+            box-sizing: border-box;
             width: 100%;
             .item-user {
                 align-items: center;

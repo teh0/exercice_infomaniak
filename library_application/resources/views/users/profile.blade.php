@@ -37,7 +37,7 @@
                 @endforeach
             </div>
         <p class="book-credit">Vous pouvez encore emprunter <span>{{ 3 - Auth::user()->countBooks }} @if ((3 - Auth::user()->countBooks) <= 1) livre @else livres @endif</span></p>
-            <a href="{{ route('collection') }}" class="back-button">Voir tous les livres</a>
+            <a href="{{ route('collectionBook') }}" class="back-button">Voir tous les livres</a>
         </div>
 
     </section>

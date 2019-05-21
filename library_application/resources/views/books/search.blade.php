@@ -13,7 +13,7 @@
                     <span class="book-title">{{ $book->title }}</span>
                     <img src="{{ $book->small_thumbnail }}" alt="">
                 </div>
-                <a href="{{ route('single', ['slug_categ'=>$book->category->slug, 'id_book'=>$book->id]) }}">Voir le livre</a>
+                <a href="{{ route('singleBook', ['slug_categ'=>$book->category->slug, 'id_book'=>$book->id]) }}">Voir le livre</a>
             </div>
             @endforeach
         </div>
