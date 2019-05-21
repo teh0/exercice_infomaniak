@@ -1,6 +1,89 @@
 .app-container[data-page="backoffice_users"] {
-    background-color: green;
+    justify-content: flex-start;
     display: flex;
+    height: 100vh;
 
+    .board-backoffice {
+        align-items: flex-start;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+        padding: 50px;
+        width: 100%;
+
+        .block {
+            background-color: white;
+            border-radius: 4px;
+            margin-bottom: 40px;
+            padding: 20px;
+
+            h2 {
+                font-size: 25px;
+                font-weight: bold;
+                margin-bottom: 30px;
+            }
+        }
+
+        .list-users {
+            width: 100%;
+            .item-user {
+                align-items: center;
+                border-bottom: 1px solid rgba(0,0,0,0.1);
+                border-top: 1px solid rgba(0,0,0,0.1);
+                display: flex;
+                justify-content: space-between;
+                padding: 10px 0;
+
+                * {
+                    margin-left: 15px;
+                }
+                img {
+                    border-radius: 50%;
+                    width: 60px;
+                }
+
+                &-info {
+                    align-items: center;
+                    display: flex;
+                    font-size: 18px;
+
+                    .info-label {
+                        color: black;
+                        font-weight: bold;
+                    }
+                    .count-book-user {
+                        color: $pink;
+                    }
+                }
+
+                &-button-contact {
+                    background-color: black;
+                    border-radius: 4px;
+                    color: white;
+                    margin-right: 100px; 
+                    padding: 10px 15px;
+                    text-decoration: none;
+                }
+            }
+        }
+
+        .count-users {
+            padding: 50px;
+            h2 {
+                margin: 0;
+            }
+            .total-users {
+                color: $pink;
+                font-size: 100px;
+                margin: 20px 0;
+                text-align: center;
+            }
+            .last-user {
+                font-weight: bold;
+            }
+        }
+
+    }
 
 }

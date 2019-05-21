@@ -18,13 +18,14 @@ class AdminController extends Controller
         switch ($page) {
             case 'users':
             $users = User::all();
+            $lastuser = User::all()->sortBy('created_at')->last();
             $currentpage = $page;
-            return view('admins.backoffice_'.$page, compact('users','page'));
+            return view('admins.backoffice_'.$page, compact('users','page','lastuser'));
             break;
             
             case 'books':
             $books = Book::all();
-            return view('admins.backoffice_users_'.$page, compact($books));
+            return view('admins.backoffice_'.$page, compact('books', 'page'));
             break;
 
         }

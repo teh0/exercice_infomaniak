@@ -183,8 +183,67 @@ body {
       padding: 15px 30px; }
 
 .app-container[data-page="backoffice_users"] {
-  background-color: green;
-  display: flex; }
+  justify-content: flex-start;
+  display: flex;
+  height: 100vh; }
+  .app-container[data-page="backoffice_users"] .board-backoffice {
+    align-items: flex-start;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    padding: 50px;
+    width: 100%; }
+    .app-container[data-page="backoffice_users"] .board-backoffice .block {
+      background-color: white;
+      border-radius: 4px;
+      margin-bottom: 40px;
+      padding: 20px; }
+      .app-container[data-page="backoffice_users"] .board-backoffice .block h2 {
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 30px; }
+    .app-container[data-page="backoffice_users"] .board-backoffice .list-users {
+      width: 100%; }
+      .app-container[data-page="backoffice_users"] .board-backoffice .list-users .item-user {
+        align-items: center;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0; }
+        .app-container[data-page="backoffice_users"] .board-backoffice .list-users .item-user * {
+          margin-left: 15px; }
+        .app-container[data-page="backoffice_users"] .board-backoffice .list-users .item-user img {
+          border-radius: 50%;
+          width: 60px; }
+        .app-container[data-page="backoffice_users"] .board-backoffice .list-users .item-user-info {
+          align-items: center;
+          display: flex;
+          font-size: 18px; }
+          .app-container[data-page="backoffice_users"] .board-backoffice .list-users .item-user-info .info-label {
+            color: black;
+            font-weight: bold; }
+          .app-container[data-page="backoffice_users"] .board-backoffice .list-users .item-user-info .count-book-user {
+            color: #FB503B; }
+        .app-container[data-page="backoffice_users"] .board-backoffice .list-users .item-user-button-contact {
+          background-color: black;
+          border-radius: 4px;
+          color: white;
+          margin-right: 100px;
+          padding: 10px 15px;
+          text-decoration: none; }
+    .app-container[data-page="backoffice_users"] .board-backoffice .count-users {
+      padding: 50px; }
+      .app-container[data-page="backoffice_users"] .board-backoffice .count-users h2 {
+        margin: 0; }
+      .app-container[data-page="backoffice_users"] .board-backoffice .count-users .total-users {
+        color: #FB503B;
+        font-size: 100px;
+        margin: 20px 0;
+        text-align: center; }
+      .app-container[data-page="backoffice_users"] .board-backoffice .count-users .last-user {
+        font-weight: bold; }
 
 .app-container[data-page="login"] {
   align-items: center;
@@ -490,10 +549,25 @@ body {
         text-decoration: none; }
 
 .menu-backoffice {
-  align-items: flex-start;
   background-color: #FB503B;
   display: flex;
   flex-direction: column;
-  padding-top: 100px; }
+  padding-top: 50px; }
+  .menu-backoffice a.menu-link {
+    align-items: center;
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    padding: 20px 40px;
+    text-decoration: none; }
+    .menu-backoffice a.menu-link img {
+      margin-right: 10px;
+      width: 25px; }
+    .menu-backoffice a.menu-link span {
+      white-space: nowrap; }
+    .menu-backoffice a.menu-link.isSelected {
+      background-color: #E14532; }
+  .menu-backoffice a:first-child {
+    margin-bottom: 30px; }
 
 /*# sourceMappingURL=app.css.map */

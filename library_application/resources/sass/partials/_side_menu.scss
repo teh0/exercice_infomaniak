@@ -1,7 +1,28 @@
 .menu-backoffice {
-    align-items: flex-start;
     background-color: $pink;
     display: flex;
     flex-direction: column;
-    padding-top: 100px;
+    padding-top: 50px;
+
+    a.menu-link {
+        align-items: center;
+        color: white;
+        display: flex;
+        justify-content: flex-start;
+        padding: 20px 40px;
+        text-decoration: none;
+        img {
+            margin-right: 10px;
+            width: 25px;
+        }
+        span {
+            white-space: nowrap;
+        }
+        &.isSelected {
+            background-color: #E14532;
+        }
+    }
+    & a:first-child {
+        margin-bottom: 30px;
+    }
 }
