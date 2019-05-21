@@ -7,7 +7,7 @@
         @csrf
 
         <div class="form-header">
-            <p><span class="sharp">#</span>&nbsp;Enregistrez-vous</p>
+            <p><span class="sharp">#</span>&nbsp;Créer un compte</p>
         </div>
 
         <!-- Name block -->

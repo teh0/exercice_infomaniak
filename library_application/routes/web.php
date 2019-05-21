@@ -30,4 +30,8 @@ Route::prefix('user')->group(function () {
     Route::post('/profile', 'UsersController@update_avatar')->name('update_avatar');
 });
 
+Route::prefix('admin')->group(function () {
+    Route::get('/backoffice/{view}', 'AdminController@displayBackoffice')->name('backoffice'); /* view = users or books*/
+});
+
 Auth::routes();

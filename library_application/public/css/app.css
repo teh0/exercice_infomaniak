@@ -182,6 +182,10 @@ body {
       margin: 40px 0;
       padding: 15px 30px; }
 
+.app-container[data-page="backoffice_users"] {
+  background-color: green;
+  display: flex; }
+
 .app-container[data-page="login"] {
   align-items: center;
   background-image: url("../img/bck_book.jpg");
@@ -354,12 +358,21 @@ body {
 .app-container[data-page="search"] section .list-result-book .block-result {
   align-items: center;
   background-color: white;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
-  margin: 10px 0; }
+  margin: 10px 0;
+  padding: 15px; }
+  .app-container[data-page="search"] section .list-result-book .block-result .book-title {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px; }
   .app-container[data-page="search"] section .list-result-book .block-result a {
     background-color: #FB503B;
-    color: white; }
+    color: white;
+    margin-right: 50px;
+    padding: 15px; }
 
 .app-container[data-page="profile"] section {
   display: flex;
@@ -475,5 +488,12 @@ body {
         margin-right: 35px;
         padding: 10px 15px;
         text-decoration: none; }
+
+.menu-backoffice {
+  align-items: flex-start;
+  background-color: #FB503B;
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px; }
 
 /*# sourceMappingURL=app.css.map */

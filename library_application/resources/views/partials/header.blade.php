@@ -26,9 +26,9 @@
         @if((Auth::user()->role)=="admin")
         <div data-auth="admin" class="link-container">
             <a class="link-logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Se déconnecter</a>
-            <a class="link-profile" href="">Mon profil</a>
-            <a class="link-backoffice" href="">Backoffice</a>
-            <div class="img-profile-container"><img src="{{ asset('upload/'.Auth::user()->avatar) }}" alt=""></div>
+            <a class="link-profile" href="{{ route('profile') }}">Mon profil</a>
+            <a class="link-backoffice" href="{{ route('backoffice', 'users') }}">Backoffice</a>
+            <div class="img-profile-container"><img src="{{ asset('upload/avatars/'.Auth::user()->avatar) }}" alt=""></div>
         </div>
         @endif
         @endauth
