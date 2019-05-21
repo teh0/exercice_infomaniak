@@ -12,9 +12,13 @@ class BookController extends Controller
 
     public function search(Request $request) {
         $query = $request->input('search-book');
-        $books = Book::with('category')->where('title', 'LIKE', '%' . $query . '%')->paginate(10);
-        return view('books.search', compact('books'));
-        
+        if(!empty($query)) {
+            $books = Book::with('category')->where('title', 'LIKE', '%' . $query . '%')->paginate(10);
+            return view('books.search', compact('books'));
+        }
+        else {
+            return redirect('/')->with('message', 'Veuillez saisir une valeur svp');
+        }
     }
 
     /**

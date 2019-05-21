@@ -15,6 +15,9 @@
             <input type="text" name="search-book" placeholder="Rechercher un livre sur ..." autofocus>
             <button type="submit"><img src="{{ asset('img/svg/search.svg')}}" alt=""></button>
         </form>
+        @if (session()->has('message'))
+            <span class="error-message">{{ session('message') }}</span>
+        @endif
         <a class="link-book-collection" href="{{ route('collection') }}">Voir tous les livres</a>
     </section>
 </div>

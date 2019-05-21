@@ -12,6 +12,10 @@
     }
 
     section {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         position: relative;
         text-align: center;
         z-index: 1;
@@ -23,7 +27,6 @@
 
         form {
             display: flex;
-            margin: 40px 0;
             width: 640px;
 
             input[type="text"] {
@@ -57,10 +60,15 @@
             }
         }
 
+        .error-message {
+            color: $pink;
+        }
+
         .link-book-collection {
             background-color: black;
             box-sizing: border-box;
             color: white;
+            margin: 40px 0;
             padding: 15px 30px;
         }
     }

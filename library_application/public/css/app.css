@@ -138,6 +138,10 @@ body {
     background-color: black;
     opacity: 0.4; }
   .app-container[data-page="home"] section {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     position: relative;
     text-align: center;
     z-index: 1; }
@@ -146,7 +150,6 @@ body {
       font-size: 45px; }
     .app-container[data-page="home"] section form {
       display: flex;
-      margin: 40px 0;
       width: 640px; }
       .app-container[data-page="home"] section form input[type="text"] {
         border: none;
@@ -170,10 +173,13 @@ body {
           height: 20px;
           margin: 20px;
           width: 20px; }
+    .app-container[data-page="home"] section .error-message {
+      color: #FB503B; }
     .app-container[data-page="home"] section .link-book-collection {
       background-color: black;
       box-sizing: border-box;
       color: white;
+      margin: 40px 0;
       padding: 15px 30px; }
 
 .app-container[data-page="login"] {
@@ -341,6 +347,19 @@ body {
       margin-top: 10px; }
       .app-container[data-page="book-single"] .info-container .link-login a {
         color: #FB503B; }
+
+.app-container[data-page="search"] section .header-search {
+  font-size: 30px;
+  padding: 50px 0; }
+.app-container[data-page="search"] section .list-result-book .block-result {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0; }
+  .app-container[data-page="search"] section .list-result-book .block-result a {
+    background-color: #FB503B;
+    color: white; }
 
 .app-container[data-page="profile"] section {
   display: flex;
