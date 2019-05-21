@@ -1,7 +1,8 @@
 .app-container[data-page="book-edit"] {
-    .data-page-overlay {
+    .book-edit-overlay{
         background-color: black;
         opacity: 0.5;
+        position: fixed;
     }
     align-items: center;
     background-attachment: fixed;

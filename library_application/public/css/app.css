@@ -131,7 +131,7 @@ body {
   bottom: 0;
   height: 100%;
   left: 0;
-  position: fixed;
+  position: absolute;
   right: 0;
   top: 0;
   width: 100%;
@@ -497,9 +497,10 @@ body {
   background-image: url("../img/bck_book.jpg");
   display: flex;
   justify-content: center; }
-  .app-container[data-page="book-edit"] .data-page-overlay {
+  .app-container[data-page="book-edit"] .book-edit-overlay {
     background-color: black;
-    opacity: 0.5; }
+    opacity: 0.5;
+    position: fixed; }
   .app-container[data-page="book-edit"] form {
     margin: 60px 0;
     z-index: 1; }

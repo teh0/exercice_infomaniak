@@ -14,7 +14,7 @@
             <form enctype="multipart/form-data" action="{{ route('update_avatar') }}" method="POST">
                 @csrf
                 <label for="avatar">Changer la photo</label>
-                <input id="avatar" type="file" name="avatar">
+                <input id="avatar" type="file" name="avatar" accept="image/x-png,image/gif,image/jpeg">
                 <input type="submit">
             </form>
         </div>

@@ -2,8 +2,8 @@
 
 @section('app_container')
 <div data-page="book-edit" class="app-container">
-        <div class="data-page-overlay overlay"></div>
-    <form action="{{ route('updateBook', $book->id )}}" method="POST" class="form-borrowell">
+        <div class="book-edit-overlay overlay"></div>
+    <form enctype="multipart/form-data" action="{{ route('updateBook', $book->id )}}" method="POST" class="form-borrowell">
         @csrf
 
         <div class="form-header">
@@ -20,7 +20,7 @@
 
         <!-- Book author -->
         <div class="block-form">
-            @error('book_title')
+            @error('book_author')
             <span class="error-message">{{ $message }}</span>
             @enderror
             <label for="book_author">Auteur</label>
@@ -62,8 +62,7 @@
             <span class="error-message">{{ $message }}</span>
             @enderror
             <label for="book_category">Nombre de page</label>
-            <select type="text" id="book_category" placeholder="" class="form-control @error('book_pageCount') invalid @enderror" name="book_category" value="{{ old('book_category') }}" required>
-                <option selected disabled hidden value="default">Choisir une catégorie</option>
+            <select type="text" id="book_category" class="form-control @error('book_pageCount') invalid @enderror" name="book_category" value="{{ old('book_category') }}" required>
                 <option {{ $book->category->slug =="php" ? "selected" : "" }} value="php">PHP</option>
                 <option {{ $book->category->slug =="javascript" ? "selected" : "" }} value="javascript">Javascript</option>
                 <option {{ $book->category->slug =="html" ? "selected" : "" }} value="html">HTML</option>
@@ -74,13 +73,13 @@
         </div>
         <!-- Book Thumbnail -->
         <div class="block-form">
-            @error('book_small_thumbnail')
+            @error('book_large_thumbnail')
             <span class="error-message">{{ $message }}</span>
             @enderror
-            <label for="book_small_thumbnail">Choisir une image pour la couverture
+            <label for="book_large_thumbnail">Choisir une image pour la couverture
                     <img src="{{ $book->small_thumbnail }}" alt="">
             </label>
-            <input type="file" name="book_small_thumbnail" id="book_small_thumbnail">
+            <input type="file" name="book_large_thumbnail" id="book_large_thumbnail">
         </div>
         <!-- Button submit -->
         <button type="submit" class="btn btn-primary">Mettre à jour</button>
