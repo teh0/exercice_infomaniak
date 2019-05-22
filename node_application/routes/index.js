@@ -60,14 +60,13 @@ module.exports = function (app) {
                             description: element.volumeInfo.description,
                             pageCount: element.volumeInfo.pageCount,
                             lang: element.volumeInfo.language,
-                            publishedDate: element.volumeInfo.publishedDate,
 
                         };
                         if (element.volumeInfo.imageLinks) {
                             newdataBook.small_thumbnail = element.volumeInfo.imageLinks.thumbnail;
                         }
                         // If a value of props is undefined or total props number != 7, we don't keep the book
-                        if (Object.values(newdataBook).length === 7 && !Object.values(newdataBook).includes(undefined)) {
+                        if (Object.values(newdataBook).length === 6 && !Object.values(newdataBook).includes(undefined)) {
                             let thumb_regex = /zoom=1/gi;
                             newdataBook.large_thumbnail = newdataBook.small_thumbnail.replace(thumb_regex, 'zoom=0');
                             listValidBooks.push(newdataBook);
@@ -87,8 +86,8 @@ module.exports = function (app) {
                     listValidBooks.forEach(element => {
                         if (!listTitleBookStored.includes(element.title) && !listDescriptionBookStored.includes(encodeURI(element.description))) {
                             listNewBooksStored.push(element);
-                            connection.query(`INSERT INTO ${table} (category_id, title, authors, small_thumbnail, large_thumbnail, description, pageCount, lang, publishedDate, created_at, updated_at) 
-                            VALUES ("${categroyID[category]}", "${element.title}", "${element.authors}", "${element.small_thumbnail}", "${element.large_thumbnail}", "${encodeURI(element.description)}", "${element.pageCount}", "${element.lang}", "${element.publishedDate}", "${moment().format('YYYY-MM-DD HH:mm:ss')}", "${moment().format('YYYY-MM-DD HH:mm:ss')}")`, function (error, results, fields) {
+                            connection.query(`INSERT INTO ${table} (category_id, title, authors, small_thumbnail, large_thumbnail, description, pageCount, lang, fromApi, created_at, updated_at) 
+                            VALUES ("${categroyID[category]}", "${element.title}", "${element.authors}", "${element.small_thumbnail}", "${element.large_thumbnail}", "${encodeURI(element.description)}", "${element.pageCount}", "${element.lang}", true, "${moment().format('YYYY-MM-DD HH:mm:ss')}", "${moment().format('YYYY-MM-DD HH:mm:ss')}")`, function (error, results, fields) {
                                 if (error) throw error;
                             });
                         }

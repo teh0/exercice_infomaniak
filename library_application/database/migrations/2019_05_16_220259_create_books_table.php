@@ -22,10 +22,10 @@ class CreateBooksTable extends Migration
             $table->string('small_thumbnail');
             $table->string('large_thumbnail');
             $table->boolean('isBorrowed')->default(false);
+            $table->boolean('fromApi')->default(false);
             $table->text('description');
             $table->integer('pageCount');
             $table->string('lang');
-            $table->string('publishedDate');
             $table->timestamps();
         });
     }

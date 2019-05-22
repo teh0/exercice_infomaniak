@@ -5,3 +5,16 @@
  */
 
 require('./bootstrap');
+import InitTurbolinks from './customClass/InitTurboLinks';
+class App {
+	constructor() {
+        console.log('Application Borrowell lancée !');
+		this.initApp();
+	}
+
+	initApp() {
+        this.InitTurbolinks = new InitTurbolinks();
+	}
+}
+
+new App();
