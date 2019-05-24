@@ -112,7 +112,7 @@ class BookController extends Controller
         //Set default thumbnail if user doesn't add new thumb
         if(!$request->file('book_large_thumbnail')){
             $book->small_thumbnail = "default_small_thumbnail.jpg";
-            $book->large_thumbnail = "default_small_thumbnail.jpg";
+            $book->large_thumbnail = "default_large_thumbnail.jpg";
         }
         //Create 2 thumb (large and small) from thumb chosen by user
         else if ($request->file('book_large_thumbnail')){
@@ -228,7 +228,7 @@ class BookController extends Controller
         }
         $book->delete();
 
-        return redirect()->route('backoffice', 'books');
+        return redirect()->route('collectionBook');
     }
 
     /**

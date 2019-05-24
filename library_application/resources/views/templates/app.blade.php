@@ -5,6 +5,7 @@
 </head>
 
 <body>
+        @include('partials.screen_responsive')
     <div class="app-page">
     @include('partials.header')
     @yield('app_container')

@@ -172,6 +172,7 @@ body {
       font-size: 45px;
       margin-bottom: 25px; }
     .app-container[data-page="home"] section form {
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.24);
       display: flex;
       width: 640px; }
       .app-container[data-page="home"] section form input[type="text"] {
@@ -182,6 +183,7 @@ body {
         font-size: 20px;
         outline: none;
         padding: 20px;
+        transition: all 0.3s ease-out;
         width: 100%; }
         .app-container[data-page="home"] section form input[type="text"]::placeholder {
           color: #7B7271;
@@ -196,14 +198,21 @@ body {
           height: 20px;
           margin: 20px;
           width: 20px; }
+      .app-container[data-page="home"] section form:hover input[type="text"] {
+        background-color: #d8d8d8; }
     .app-container[data-page="home"] section .error-message {
       color: #FB503B; }
     .app-container[data-page="home"] section .link-book-collection {
       background-color: black;
       box-sizing: border-box;
       color: white;
+      font-size: 20px;
       margin: 40px 0;
-      padding: 15px 30px; }
+      padding: 15px 30px;
+      text-decoration: none;
+      transition: all 0.2s ease-out; }
+      .app-container[data-page="home"] section .link-book-collection:hover {
+        background-color: #131313; }
 
 .app-container[data-page="backoffice_users"] {
   justify-content: flex-start;
@@ -219,7 +228,7 @@ body {
     width: 100%; }
     .app-container[data-page="backoffice_users"] .board-backoffice .block {
       background-color: white;
-      border-radius: 4px;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.24);
       margin-bottom: 40px;
       padding: 20px; }
       .app-container[data-page="backoffice_users"] .board-backoffice .block h2 {
@@ -252,7 +261,6 @@ body {
             color: #FB503B; }
         .app-container[data-page="backoffice_users"] .board-backoffice .list-users .item-user-button-contact {
           background-color: black;
-          border-radius: 4px;
           color: white;
           margin-right: 100px;
           padding: 10px 15px;
@@ -270,9 +278,9 @@ body {
         font-weight: bold; }
 
 .app-container[data-page="backoffice_books"] {
-  justify-content: flex-start;
   display: flex;
-  height: 100vh; }
+  height: 100vh;
+  justify-content: flex-start; }
   .app-container[data-page="backoffice_books"] .board-backoffice {
     align-items: flex-start;
     box-sizing: border-box;
@@ -283,7 +291,7 @@ body {
     width: 100%; }
     .app-container[data-page="backoffice_books"] .board-backoffice .block {
       background-color: white;
-      border-radius: 4px;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.24);
       margin-bottom: 40px;
       padding: 20px; }
       .app-container[data-page="backoffice_books"] .board-backoffice .block h2 {
@@ -313,19 +321,18 @@ body {
             margin-left: 25px; }
         .app-container[data-page="backoffice_books"] .board-backoffice .list-books .item-book-button-block .button-show {
           background-color: black;
-          border-radius: 4px;
           color: white;
           margin-right: 50px;
           padding: 10px 15px;
           text-decoration: none; }
         .app-container[data-page="backoffice_books"] .board-backoffice .list-books .item-book-button-block .button-edit {
           background-color: #FB503B;
-          border-radius: 4px;
           color: white;
           margin-right: 100px;
           padding: 10px 15px;
           text-decoration: none; }
     .app-container[data-page="backoffice_books"] .board-backoffice form.form-search-book {
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.24);
       display: flex;
       margin-bottom: 20px;
       width: 640px; }
@@ -399,6 +406,7 @@ body {
     .app-container[data-page="book-collection"] section a.block-category {
       align-items: center;
       background-color: white;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.24);
       color: black;
       display: flex;
       flex-direction: column;
@@ -440,6 +448,7 @@ body {
       align-items: center;
       background-color: white;
       box-sizing: border-box;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.24);
       color: black;
       display: flex;
       flex-direction: column;
@@ -640,6 +649,7 @@ body {
       .app-container[data-page="profile"] section .user-borrow .list-borrow-book .block-borrow-book {
         align-items: center;
         background-color: white;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.24);
         padding: 20px;
         display: flex;
         flex-direction: column;
@@ -648,8 +658,7 @@ body {
         .app-container[data-page="profile"] section .user-borrow .list-borrow-book .block-borrow-book img {
           margin-bottom: 10px; }
         .app-container[data-page="profile"] section .user-borrow .list-borrow-book .block-borrow-book a.link-borrow {
-          background-color: #FB503B;
-          color: white;
+          color: black;
           font-weight: bold;
           padding: 5px;
           text-decoration: none; }
@@ -685,12 +694,11 @@ body {
         text-decoration: none; }
       .app-header-container .link-container .link-profile {
         color: #FB503B;
-        font-size: 15px;
+        font-size: 17px;
         font-weight: bold;
         margin-right: 35px; }
       .app-header-container .link-container .link-register {
         background-color: #FB503B;
-        border-radius: 4px;
         color: white;
         display: block;
         font-size: 20px;
@@ -704,10 +712,9 @@ body {
           width: 60px; }
       .app-header-container .link-container .link-backoffice {
         background-color: #FB503B;
-        border-radius: 4px;
         color: white;
         display: block;
-        font-size: 15px;
+        font-size: 18px;
         margin-right: 35px;
         padding: 10px 15px;
         text-decoration: none; }
@@ -733,5 +740,29 @@ body {
       background-color: #E14532; }
   .menu-backoffice a:first-child {
     margin-bottom: 30px; }
+
+.screen-responsive {
+  align-items: center;
+  background-color: white;
+  display: none;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 101; }
+  .screen-responsive img {
+    width: 250px; }
+  .screen-responsive span {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center; }
+
+@media only screen and (max-width: 1336px) {
+  .screen-responsive {
+    display: flex; } }
 
 /*# sourceMappingURL=app.css.map */

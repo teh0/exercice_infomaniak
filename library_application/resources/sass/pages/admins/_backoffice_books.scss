@@ -1,7 +1,7 @@
 .app-container[data-page="backoffice_books"] {
-    justify-content: flex-start;
     display: flex;
     height: 100vh;
+    justify-content: flex-start;
 
     .board-backoffice {
         align-items: flex-start;
@@ -14,7 +14,7 @@
 
         .block {
             background-color: white;
-            border-radius: 4px;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.24);
             margin-bottom: 40px;
             padding: 20px;
 
@@ -57,7 +57,6 @@
                 &-button-block {
                     .button-show {
                         background-color: black;
-                        border-radius: 4px;
                         color: white;
                         margin-right: 50px; 
                         padding: 10px 15px;
@@ -65,7 +64,6 @@
                     }
                     .button-edit {
                         background-color: $pink;
-                        border-radius: 4px;
                         color: white;
                         margin-right: 100px; 
                         padding: 10px 15px;
@@ -75,6 +73,7 @@
             }
         }
         form.form-search-book {
+            box-shadow: 0 1px 1px rgba(0,0,0,0.24);
             display: flex;
             margin-bottom: 20px;
             width: 640px;

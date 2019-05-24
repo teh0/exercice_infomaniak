@@ -14,7 +14,7 @@
 
         .block {
             background-color: white;
-            border-radius: 4px;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.24);
             margin-bottom: 40px;
             padding: 20px;
 
@@ -60,7 +60,6 @@
 
                 &-button-contact {
                     background-color: black;
-                    border-radius: 4px;
                     color: white;
                     margin-right: 100px; 
                     padding: 10px 15px;

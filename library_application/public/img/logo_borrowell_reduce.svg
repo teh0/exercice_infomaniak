@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.624 127.624">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fb503b;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Groupe_1" data-name="Groupe 1" transform="translate(-266.289 -22.432)">
+    <g id="Logo" transform="translate(49.154)">
+      <g id="Groupe_1-2" data-name="Groupe 1" transform="translate(190.703 -4)">
+        <path id="Tracé_1" data-name="Tracé 1" class="cls-1" d="M63.812,0A63.812,63.812,0,1,1,0,63.812,63.812,63.812,0,0,1,63.812,0Z" transform="translate(26.432 26.432)"/>
+        <rect id="Rectangle_1" data-name="Rectangle 1" class="cls-2" width="5.469" height="43.748" rx="1" transform="translate(80.296 74.653) rotate(45)"/>
+        <rect id="Rectangle_2" data-name="Rectangle 2" class="cls-2" width="5.469" height="103.902" rx="1" transform="translate(124.121 50.651) rotate(45)"/>
+        <rect id="Rectangle_3" data-name="Rectangle 3" class="cls-2" width="5.469" height="43.748" rx="1" transform="translate(119.259 74.653) rotate(45)"/>
+      </g>
+    </g>
+  </g>
+</svg>

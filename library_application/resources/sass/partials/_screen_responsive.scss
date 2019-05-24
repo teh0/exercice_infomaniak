@@ -1,0 +1,29 @@
+.screen-responsive {
+    align-items: center;
+    background-color: white;
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 101;
+
+    img {
+        width:250px;
+    }
+
+    span {
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 20px;
+        text-align: center;
+    }
+}
+@media only screen and (max-width: 1336px) {
+    .screen-responsive {
+        display: flex;
+    }
+}
