@@ -10,7 +10,7 @@
                     @if ($book->isBorrowed)
                         <div class="item-book">
                             <div class="item-book-info">
-                                <img src="{{ $book->small_thumbnail }}" alt="">
+                                <img src="@if($book->fromApi) {{ $book->small_thumbnail }} @else {{ asset('upload/thumbnails').'/'.$book->small_thumbnail }} @endif" alt="">
                                 <p class="title-book"><span class="info-label">Titre:</span> {{ $book->title }}</p>
                                 <p class="title-book"><span class="info-label">empreinté par </span> {{ $book->user->name }}</p>
                             </div>

@@ -25,7 +25,7 @@
             <div class="list-borrow-book">
                 @foreach (Auth::user()->books as $book)
                 <div class="block-borrow-book">
-                    <img src="{{ $book->small_thumbnail }}" alt="">
+                    <img src="@if($book->fromApi) {{ $book->small_thumbnail }} @else {{ asset('upload/thumbnails').'/'.$book->small_thumbnail }} @endif" alt="">
                     <a class="link-borrow" href="" onclick="event.preventDefault(); document.getElementById('unborrow-form').submit();">Rendre le
                         livre</a>
                     <form id="unborrow-form" action="{{ route('unborrowBook', ['id_book' => $book->id]) }}" method="POST"

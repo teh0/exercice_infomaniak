@@ -4,7 +4,7 @@
 <div data-page="book-single" class="app-container">
     <div class="thumbnail-container">
         <div class="overlay-thumbnail overlay"></div>
-        <img src="{{ $book->large_thumbnail }}" alt="Page de couverture du livre {{ $book->title }}">
+        <img src="@if($book->fromApi) {{ $book->large_thumbnail }} @else {{ asset('upload/thumbnails').'/'.$book->large_thumbnail }} @endif" alt="Page de couverture du livre {{ $book->title }}">
             {{-- If user is admin --}}
         @auth
             @if (Auth::user()->role == 'admin')

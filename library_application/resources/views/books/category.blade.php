@@ -8,7 +8,7 @@
         @foreach($category->books as $book)
             <a class="block-book" href="{{ route('singleBook', ['id_book' => $book->id,'slug_categ' => $category->slug]) }}">
 
-                <img src="{{ $book->small_thumbnail }}" alt="">
+                <img src="@if($book->fromApi) {{ $book->small_thumbnail }} @else {{ asset('upload/thumbnails').'/'.$book->small_thumbnail }} @endif" alt="">
             </a>
         @endforeach
     </section>
