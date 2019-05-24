@@ -1,4 +1,4 @@
-<header class="app-header">
+<header data-turbolinks-permanent class="app-header">
     <div class="app-header-container app-wrapper">
         <a href="{{ route('home') }}"><img src="{{ asset('img/logo_borrowell.svg') }}" alt="logo Borrowell"></a>
 

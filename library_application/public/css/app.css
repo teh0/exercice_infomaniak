@@ -498,7 +498,9 @@ body {
       font-weight: bold;
       margin-bottom: 50px; }
     .app-container[data-page="book-single"] .info-container .description-block {
-      margin-bottom: 20px; }
+      margin-bottom: 20px;
+      max-width: 65%;
+      width: 700px; }
       .app-container[data-page="book-single"] .info-container .description-block span {
         display: inline-block;
         font-size: 20px;
@@ -506,7 +508,6 @@ body {
         margin-bottom: 8px; }
       .app-container[data-page="book-single"] .info-container .description-block p {
         line-height: 18px;
-        max-width: 70%;
         word-wrap: break-word; }
     .app-container[data-page="book-single"] .info-container .link-borrow {
       color: white;
@@ -646,9 +647,11 @@ body {
         margin: 10px; }
         .app-container[data-page="profile"] section .user-borrow .list-borrow-book .block-borrow-book img {
           margin-bottom: 10px; }
-        .app-container[data-page="profile"] section .user-borrow .list-borrow-book .block-borrow-book a {
-          color: black;
+        .app-container[data-page="profile"] section .user-borrow .list-borrow-book .block-borrow-book a.link-borrow {
+          background-color: #FB503B;
+          color: white;
           font-weight: bold;
+          padding: 5px;
           text-decoration: none; }
     .app-container[data-page="profile"] section .user-borrow .book-credit span {
       font-weight: bold; }

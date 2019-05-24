@@ -13,6 +13,12 @@ use Image;
 class BookController extends Controller
 {
 
+    /**
+     * search
+     *
+     * @param Request $request
+     * @return void
+     */
     public function search(Request $request) {
         $query = $request->input('search-book');
         if(!empty($query)) {
@@ -24,10 +30,12 @@ class BookController extends Controller
         }
     }
 
+
     /**
-     * Update isBorrowed and user_id of Book send in param.
+     * borrow
      *
-     * @return \Illuminate\Http\Response
+     * @param mixed $id_book
+     * @return void
      */
     public function borrow($id_book) {
         $user = Auth::user();
@@ -42,10 +50,12 @@ class BookController extends Controller
         
     }
 
+
     /**
-     * Update isBorrowed and user_id of Book send in param.
+     * unborrow
      *
-     * @return \Illuminate\Http\Response
+     * @param mixed $id_book
+     * @return void
      */
     public function unborrow($id_book) {
         $user = Auth::user();
@@ -61,21 +71,23 @@ class BookController extends Controller
         return redirect('user/profile');
     }
 
+
     /**
-     * Show the form for creating a new resource.
+     * create
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function create()
     {
         return view('books.create');
     }
 
+
     /**
-     * Store a newly created resource in storage.
+     * store
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return void
      */
     public function store(Request $request)
     {
@@ -105,7 +117,7 @@ class BookController extends Controller
         //Create 2 thumb (large and small) from thumb chosen by user
         else if ($request->file('book_large_thumbnail')){
             $data_large_thumbnail = $request->file('book_large_thumbnail');
-            $prefix_thumbnail = strtolower(str_replace(' ', '',$book->title)).time();
+            $prefix_thumbnail = $this->formateString($book->title).time();
             $name_large_thumbnail = $prefix_thumbnail.'_large.'. $data_large_thumbnail->getClientOriginalExtension();
             $name_small_thumbnail = $prefix_thumbnail.'_small.'. $data_large_thumbnail->getClientOriginalExtension();
 
@@ -120,11 +132,13 @@ class BookController extends Controller
         return redirect()->route('singleBook', ['slug_categ'=> $book->category->slug, 'id_book' => $book->id]);
     }
 
+
     /**
-     * Display the specified resource.
+     * show
      *
-     * @param  \App\Book  $book
-     * @return \Illuminate\Http\Response
+     * @param mixed $slug_categ
+     * @param mixed $id_book
+     * @return void
      */
     public function show($slug_categ, $id_book)
     {
@@ -132,11 +146,12 @@ class BookController extends Controller
         return view('books.single', compact('book'));
     }
 
+
     /**
-     * Show the form for editing the specified resource.
+     * edit
      *
-     * @param  \App\Book  $book
-     * @return \Illuminate\Http\Response
+     * @param mixed $id_book
+     * @return void
      */
     public function edit($id_book)
     {
@@ -144,12 +159,13 @@ class BookController extends Controller
         return view('books.edit', compact('book'));
     }
 
+
     /**
-     * Update the specified resource in storage.
+     * update
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Book  $book
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param mixed $id_book
+     * @return void
      */
     public function update(Request $request, $id_book)
     {
@@ -178,7 +194,7 @@ class BookController extends Controller
         //Create 2 thumb (large and small) from thumb chosen by user
         else if ($request->file('book_large_thumbnail')){
             $data_large_thumbnail = $request->file('book_large_thumbnail');
-            $prefix_thumbnail = $book->id;
+            $prefix_thumbnail = $this->formateString($book->title).time();
             $name_large_thumbnail = $prefix_thumbnail.'_large.'. $data_large_thumbnail->getClientOriginalExtension();
             $name_small_thumbnail = $prefix_thumbnail.'_small.'. $data_large_thumbnail->getClientOriginalExtension();
 
@@ -191,14 +207,14 @@ class BookController extends Controller
         }
         
         $book->save();
-        return redirect()->route('backoffice', 'books');
+        return redirect()->route('singleBook', ['slug_categ'=> $book->category->slug, 'id_book' => $book->id]);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * destroy
      *
-     * @param  \App\Book  $book
-     * @return \Illuminate\Http\Response
+     * @param mixed $id_book
+     * @return void
      */
     public function destroy($id_book)
     {
@@ -213,5 +229,15 @@ class BookController extends Controller
         $book->delete();
 
         return redirect()->route('backoffice', 'books');
+    }
+
+    /**
+     * formateString
+     *
+     * @param mixed $str
+     * @return void
+     */
+    public function formateString($str) {
+        return strtolower(str_replace(array(' ', 'é', 'è', 'ê', 'ë', 'à', 'â', 'î', 'ï', 'ô', 'ù', 'û'), array('', 'e', 'e', 'e', 'e', 'a', 'a', 'i', 'i', 'a', 'u', 'u'),$str));
     }
 }

@@ -11,4 +11,8 @@
         <img src="{{ asset('img/svg/book.svg') }}" alt="">
         <span>Gérer les livres</span>
     </a>
+    <a href="{{ route('createBook') }}" class="menu-link menu-backoffice-link @if($page === 'books') isSelected @endif">
+        <img src="{{ asset('img/svg/add_book.svg') }}" alt="">
+        <span>Ajouter un livre</span>
+    </a>
 </nav>
