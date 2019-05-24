@@ -1,17 +1,36 @@
 .app-container[data-page="book-edit"] {
+    align-items: center;
+    background-attachment: fixed;
+    background-image: url('../img/bck_book.jpg');
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     .book-edit-overlay{
         background-color: black;
         opacity: 0.5;
         position: fixed;
     }
-    align-items: center;
-    background-attachment: fixed;
-    background-image: url('../img/bck_book.jpg');
-    display: flex;
-    justify-content: center;
 
+
+    a.button-book-delete {
+        align-items: center;
+        background-color: $pink;
+        color: white;
+        display: flex;
+        justify-content: center;
+        margin: 60px 0 30px 0;
+        padding: 30px 15px;
+        text-decoration: none;
+        text-transform: uppercase;
+        width: 400px;
+        z-index: 1;
+
+        img {
+            margin-right: 20px;
+            width: 30px;
+        }
+    }
     form {
-        margin: 60px 0;
         z-index: 1;
     }
 }

@@ -2,10 +2,19 @@
 
 @section('app_container')
 <div data-page="book-edit" class="app-container">
-        <div class="book-edit-overlay overlay"></div>
+    <div class="book-edit-overlay overlay"></div>
+    {{-- Delete button --}}
+    <a class="button-book-delete" href="" onclick="event.preventDefault(); document.getElementById('form-delete-book').submit();">
+        <img src="{{ asset('img/svg/garbage.svg') }}" alt="">
+        <span>Supprimer le livre</span>
+    </a>
+    <form id="form-delete-book" action="{{ route('deleteBook', $book->id) }}" method="POST" style="display: none;">
+        {{ csrf_field() }}
+    </form>
+    
+    {{-- Edit Form --}}
     <form enctype="multipart/form-data" action="{{ route('updateBook', $book->id )}}" method="POST" class="form-borrowell">
         @csrf
-
         <div class="form-header">
             <p><span class="sharp">#</span>&nbsp;Modifier le livre</p>
         </div>
