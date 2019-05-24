@@ -11,7 +11,7 @@
             <div class="block-result">
                 <div>
                     <span class="book-title">{{ $book->title }}</span>
-                    <img src="{{ $book->small_thumbnail }}" alt="">
+                    <img src="@if($book->fromApi) {{ $book->small_thumbnail }} @else {{ asset('upload/thumbnails').'/'.$book->small_thumbnail }} @endif" alt="">
                 </div>
                 <a href="{{ route('singleBook', ['slug_categ'=>$book->category->slug, 'id_book'=>$book->id]) }}">Voir le livre</a>
             </div>

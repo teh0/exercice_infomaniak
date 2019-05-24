@@ -16,6 +16,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::prefix('book')->group(function () {
+    //Display book
     Route::get('/collection', 'CategoryController@index')->name('collectionBook');
     Route::get('/collection/{slug_categ}', 'CategoryController@show')->name('categoryBook');
     Route::get('/collection/{slug_categ}/{id_book}', 'BookController@show')->name('singleBook');

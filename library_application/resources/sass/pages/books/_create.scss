@@ -1,0 +1,18 @@
+.app-container[data-page="book-create"] {
+    align-items: center;
+    background-attachment: fixed;
+    background-image: url('../img/bck_book.jpg');
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .book-create-overlay{
+        background-color: black;
+        opacity: 0.5;
+        position: fixed;
+    }
+
+    form {
+        margin: 60px 0;
+        z-index: 1;
+    }
+}

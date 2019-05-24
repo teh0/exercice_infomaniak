@@ -479,7 +479,8 @@ body {
         margin-bottom: 8px; }
       .app-container[data-page="book-single"] .info-container .description-block p {
         line-height: 18px;
-        max-width: 70%; }
+        max-width: 70%;
+        word-wrap: break-word; }
     .app-container[data-page="book-single"] .info-container .link-borrow {
       color: white;
       display: inline-block;
@@ -527,6 +528,21 @@ body {
       margin-right: 20px;
       width: 30px; }
   .app-container[data-page="book-edit"] form {
+    z-index: 1; }
+
+.app-container[data-page="book-create"] {
+  align-items: center;
+  background-attachment: fixed;
+  background-image: url("../img/bck_book.jpg");
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  .app-container[data-page="book-create"] .book-create-overlay {
+    background-color: black;
+    opacity: 0.5;
+    position: fixed; }
+  .app-container[data-page="book-create"] form {
+    margin: 60px 0;
     z-index: 1; }
 
 .app-container[data-page="search"] section .header-search {
