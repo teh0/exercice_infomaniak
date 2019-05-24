@@ -36,9 +36,6 @@
                 justify-content: space-between;
                 padding: 10px 0;
 
-                * {
-                    margin-left: 15px;
-                }
                 img {
                     width: 60px;
                 }
@@ -51,6 +48,10 @@
                     .info-label {
                         color: black;
                         font-weight: bold;
+                    }
+
+                    p {
+                        margin-left: 25px;
                     }
                 }
                 &-button-block {
@@ -70,6 +71,41 @@
                         padding: 10px 15px;
                         text-decoration: none;
                     }
+                }
+            }
+        }
+        form.form-search-book {
+            display: flex;
+            margin-bottom: 20px;
+            width: 640px;
+
+            input[type="text"] {
+                border: none;
+                box-sizing: border-box;
+                color: $grey;
+                font-family: $main_font;
+                font-size: 20px;
+                outline: none;
+                padding: 20px;
+                width: 100%;
+
+                &::placeholder {
+                    color: $grey;
+                    font-family: $main_font;
+                    font-size: 20px;
+
+                }
+            }
+
+            button[type="submit"] {
+                background-color: $pink;
+                border: none;
+                cursor: pointer;
+                img {
+                    box-sizing: border-box;
+                    height: 20px;
+                    margin: 20px;
+                    width: 20px;
                 }
             }
         }

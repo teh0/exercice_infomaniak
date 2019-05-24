@@ -4,6 +4,11 @@
 <div data-page="backoffice_books" class="app-container">
         @include('partials.side_menu')
         <section class="board-backoffice">
+            <form class="form-search-book" action="{{ route('searchBook') }}" method="post">
+                @csrf
+                <input type="text" name="search-book" placeholder="Rechercher un livre sur ..." autofocus>
+                <button type="submit"><img src="{{ asset('img/svg/search.svg')}}" alt=""></button>
+            </form>
             <div class="block list-books">
                 <h2><span class="sharp">#</span>&nbsp;Liste des livres empruntés</h2>
                 @foreach ($books as $book)
