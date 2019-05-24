@@ -89,6 +89,8 @@ body {
       display: none; }
     .form-borrowell .block-form input.invalid {
       border: 1px solid #FB503B; }
+  .form-borrowell .block-thumbnail label {
+    cursor: pointer; }
   .form-borrowell button[type="submit"] {
     background-color: #FB503B;
     border: none;

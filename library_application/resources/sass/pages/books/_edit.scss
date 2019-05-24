@@ -11,7 +11,7 @@
         position: fixed;
     }
 
-
+    //Delete Button
     a.button-book-delete {
         align-items: center;
         background-color: $pink;
@@ -32,5 +32,6 @@
     }
     form {
         z-index: 1;
+
     }
 }

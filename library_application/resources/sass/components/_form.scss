@@ -51,6 +51,11 @@
             border: 1px solid $pink;
         }
     }
+    .block-thumbnail {
+        label {
+            cursor: pointer;
+        }
+    }
     button[type="submit"] {
         background-color: $pink;
         border: none;

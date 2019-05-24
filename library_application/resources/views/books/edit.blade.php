@@ -81,11 +81,11 @@
             </select>
         </div>
         <!-- Book Thumbnail -->
-        <div class="block-form">
+        <div class="block-form block-thumbnail">
             @error('book_large_thumbnail')
             <span class="error-message">{{ $message }}</span>
             @enderror
-            <label for="book_large_thumbnail">Choisir une image pour la couverture
+            <label for="book_large_thumbnail">Cliquer pour modifier l'image pour la couverture
                     <img src="{{ $book->small_thumbnail }}" alt="">
             </label>
             <input type="file" name="book_large_thumbnail" id="book_large_thumbnail">
