@@ -5,6 +5,13 @@
     <div class="thumbnail-container">
         <div class="overlay-thumbnail overlay"></div>
         <img src="{{ $book->large_thumbnail }}" alt="Page de couverture du livre {{ $book->title }}">
+            {{-- If user is admin --}}
+        @auth
+            @if (Auth::user()->role == 'admin')
+            <a class="button-edit" href="{{ route('editBook', $book->id) }}">Éditer</a>
+                
+            @endif
+        @endauth
     </div>
     <div class="info-container">
             <a class="back-button" href="{{ route('categoryBook',['slug_category' => $book->category->slug]) }}"><img src="{{ asset('img/svg/left_arrow.svg') }}" alt=""><span>Revenir aux livres {{$book->category->name}}</span></a>

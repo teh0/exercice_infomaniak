@@ -22,6 +22,17 @@
             position: relative;
             width: 65%;
         }
+
+        .button-edit {
+            background-color: $pink;
+            color: white;
+            font-size: 20px;
+            padding: 10px 15px;
+            position: absolute;
+            right: 0;
+            text-decoration: none;
+            top: 0;
+        }
     }
 
     .info-container {

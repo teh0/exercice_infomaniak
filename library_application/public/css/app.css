@@ -447,6 +447,15 @@ body {
     .app-container[data-page="book-single"] .thumbnail-container img {
       position: relative;
       width: 65%; }
+    .app-container[data-page="book-single"] .thumbnail-container .button-edit {
+      background-color: #FB503B;
+      color: white;
+      font-size: 20px;
+      padding: 10px 15px;
+      position: absolute;
+      right: 0;
+      text-decoration: none;
+      top: 0; }
   .app-container[data-page="book-single"] .info-container {
     align-items: flex-start;
     display: flex;
