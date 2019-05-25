@@ -23,13 +23,13 @@ Route::prefix('book')->group(function () {
     
     // CRUD LOGIC FOR BOOK
     //---Add a book 
-    Route::get('/add', 'BookController@create')->name('createBook');
-    Route::post('/add', 'BookController@store')->name('storeBook');
+    Route::get('/add', 'BookController@create')->middleware('admin')->name('createBook');
+    Route::post('/add', 'BookController@store')->middleware('admin')->name('storeBook');
     //---Edit a book
-    Route::get('/edit/{id_book}', 'BookController@edit')->name('editBook');
-    Route::post('/edit/{id_book}', 'BookController@update')->name('updateBook');
+    Route::get('/edit/{id_book}', 'BookController@edit')->middleware('admin')->name('editBook');
+    Route::post('/edit/{id_book}', 'BookController@update')->middleware('admin')->name('updateBook');
     //---Delete a book
-    Route::post('/delete/{id_book}', 'BookController@destroy')->name('deleteBook');
+    Route::post('/delete/{id_book}', 'BookController@destroy')->middleware('admin')->name('deleteBook');
 
     //--- Other actions
     Route::post('/borrow/{id_book}', 'BookController@borrow')->name('borrowBook');
@@ -43,7 +43,7 @@ Route::prefix('user')->group(function () {
 });
 
 Route::prefix('admin')->group(function () {
-    Route::get('/backoffice/{view}', 'AdminController@displayBackoffice')->name('backoffice'); /* view = users or books*/
+    Route::get('/backoffice/{view}', 'AdminController@displayBackoffice')->middleware('admin')->name('backoffice'); /* view = users or books*/
 });
 
 Auth::routes();

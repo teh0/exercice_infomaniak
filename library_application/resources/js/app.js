@@ -8,7 +8,7 @@ require('./bootstrap');
 import InitTurbolinks from './customClass/InitTurboLinks';
 class App {
 	constructor() {
-        console.log('Application Borrowell lancée !');
+		console.log("%c  ", "background-image: url('http://127.0.0.1:8000/img/logo_borrowell.svg'); background-repeat: no-repeat; background-size: 128px 128px; font-size: 128px;")
 		this.initApp();
 	}
 
