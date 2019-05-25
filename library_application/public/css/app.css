@@ -766,5 +766,21 @@ body {
 @media only screen and (max-width: 1336px) {
   .screen-responsive {
     display: flex; } }
+.app-container[data-page="error-page"] {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  .app-container[data-page="error-page"] img {
+    width: 300px; }
+  .app-container[data-page="error-page"] span {
+    display: inline-block;
+    font-size: 20px;
+    margin: 25px 0; }
+  .app-container[data-page="error-page"] a {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    text-decoration: none; }
 
 /*# sourceMappingURL=app.css.map */

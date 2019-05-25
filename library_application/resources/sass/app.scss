@@ -42,11 +42,12 @@
 //----------- Users
 @import 'pages/users/edit';
 @import 'pages/users/profile';
-
 // Partials
 @import 'partials/header';
 @import 'partials/side_menu';
 @import 'partials/footer';
 @import 'partials/screen_responsive';
+//----------- Errors
+@import 'pages/errors/404';
 
 

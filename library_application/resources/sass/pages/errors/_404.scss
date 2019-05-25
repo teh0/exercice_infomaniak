@@ -1,0 +1,22 @@
+.app-container[data-page="error-page"] {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    img {
+        width: 300px;
+    }
+    span {
+        display: inline-block;
+        font-size: 20px;
+        margin: 25px 0;
+    }
+
+    a {
+        background-color: black;
+        color: white;
+        padding: 20px;
+        text-decoration: none;
+    }
+}
