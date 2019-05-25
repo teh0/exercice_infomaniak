@@ -31,7 +31,7 @@
             @error('password')
             <span class="error-message">{{ $message }}</span>
             @enderror
-            <input type="password" placeholder="Mot de passe" class="form-control @error('password') invalid @enderror" name="password" required autocomplete="current-password">
+            <input type="password" placeholder="Mot de passe" class=" @error('password') invalid @enderror" name="password" required autocomplete="current-password">
         </div>
 
         <!-- Confirm Password block -->

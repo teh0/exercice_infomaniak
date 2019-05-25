@@ -1,0 +1,17 @@
+.app-container[data-page="reset-password"] {
+    align-items: center;
+    background-image: url('../img/bck_book.jpg');
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .login-overlay {
+        background-color: black;
+        opacity: 0.3;
+    }
+
+    form {
+        position: relative;
+        z-index: 1;
+    }
+}

@@ -14,7 +14,7 @@
             @error('email')
             <span class="error-message">{{ $message }}</span>
             @enderror
-            <input type="email" placeholder="E-mail" class="form-control @error('email') invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+            <input type="email" placeholder="E-mail" class=" @error('email') invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
         </div>
 
         <!-- Password block -->
@@ -22,7 +22,7 @@
             @error('email')
             <span class="error-message">{{ $message }}</span>
             @enderror
-            <input type="password" placeholder="Mot de passe" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+            <input type="password" placeholder="Mot de passe" class=" @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
         </div>
         @if (Route::has('password.request'))
             <a class="link-forgot-password" href="{{ route('password.request') }}">J'ai oublié mon mot de passe</a>

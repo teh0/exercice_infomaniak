@@ -16,7 +16,6 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        // $categories->makeHidden('books')->toArray();
 
         return view('books.collection', compact('categories'));
     }
