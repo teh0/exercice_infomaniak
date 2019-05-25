@@ -71,6 +71,11 @@
                 margin-right: 35px;
                 padding: 10px 15px;
                 text-decoration: none;
+                transition: all 0.2s ease-out;
+
+                &:hover {
+                    background-color: #d84332;
+                }
             }
         }
 

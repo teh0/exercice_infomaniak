@@ -64,6 +64,11 @@
                     margin-right: 100px; 
                     padding: 10px 15px;
                     text-decoration: none;
+                    transition: all 0.2s ease-out;
+
+                    &:hover {
+                        background-color: $grey;
+                    }
                 }
             }
         }
