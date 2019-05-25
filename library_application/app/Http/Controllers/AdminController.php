@@ -9,11 +9,6 @@ use App\User;
 class AdminController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function displayBackoffice($page) {
         switch ($page) {
             case 'users':

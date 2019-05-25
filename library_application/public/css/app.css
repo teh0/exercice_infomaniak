@@ -1,63 +1,807 @@
-/*
-Error: File to import not found or unreadable: pages/users/edit.
-        on line 43 of resources/sass/app.scss
-
-38: @import 'pages/books/single';
-39: @import 'pages/books/edit';
-40: @import 'pages/books/create';
-41: @import 'pages/books/search';
-42: //----------- Users
-43: @import 'pages/users/edit';
-44: @import 'pages/users/profile';
-45: // Partials
-46: @import 'partials/header';
-47: @import 'partials/side_menu';
-48: @import 'partials/footer';
-
-Backtrace:
-resources/sass/app.scss:43
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/tree/import_node.rb:67:in `rescue in import'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/tree/import_node.rb:44:in `import'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/tree/import_node.rb:28:in `imported_file'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/tree/import_node.rb:37:in `css_import?'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/tree/visitors/perform.rb:310:in `visit_import'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/tree/visitors/base.rb:36:in `visit'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/stack.rb:79:in `block in with_base'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/stack.rb:135:in `with_frame'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/stack.rb:79:in `with_base'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/tree/visitors/perform.rb:158:in `visit'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/tree/visitors/base.rb:52:in `map'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/tree/visitors/base.rb:36:in `visit'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/tree/visitors/perform.rb:157:in `visit'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/tree/visitors/perform.rb:10:in `visit'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/tree/root_node.rb:36:in `css_tree'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/engine.rb:389:in `_render_with_sourcemap'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/engine.rb:307:in `render_with_sourcemap'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/plugin/compiler.rb:209:in `each'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/plugin/compiler.rb:443:in `on_file_changed'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/plugin/compiler.rb:320:in `block in watch'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/config.rb:23:in `call'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:115:in `_process_changes'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:19:in `block in loop_for'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:15:in `loop'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:15:in `loop_for'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/loop.rb:84:in `_wait_for_changes'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/loop.rb:42:in `block in setup'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/internals/thread_pool.rb:6:in `block in add'
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Karla:400,700&display=swap");
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
 */
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: File to import not found or unreadable: pages/users/edit.\A         on line 43 of resources/sass/app.scss\A \A 38: @import 'pages/books/single';\A 39: @import 'pages/books/edit';\A 40: @import 'pages/books/create';\A 41: @import 'pages/books/search';\A 42: //----------- Users\A 43: @import 'pages/users/edit';\A 44: @import 'pages/users/profile';\A 45: // Partials\A 46: @import 'partials/header';\A 47: @import 'partials/side_menu';\A 48: @import 'partials/footer';"; }
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none; }
+
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  font-family: "Karla", sans-serif; }
+
+.app-container {
+  padding-top: 12.5vh;
+  box-sizing: border-box;
+  background-color: #F5F2F2;
+  min-height: 100vh; }
+
+.sharp {
+  color: #FB503B; }
+
+.turbolinks-progress-bar {
+  background-color: #FB503B; }
+
+.form-borrowell {
+  background-color: white;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 1px 3px 1px rgba(60, 64, 67, 0.149);
+  padding: 30px 15px;
+  width: 400px; }
+  .form-borrowell .form-header {
+    margin-bottom: 50px; }
+    .form-borrowell .form-header p {
+      color: #7B7271;
+      font-size: 35px;
+      font-weight: bold; }
+  .form-borrowell .block-form {
+    padding: 5px;
+    margin-bottom: 25px; }
+    .form-borrowell .block-form span.error-message {
+      display: inline-block;
+      font-size: 11px;
+      padding-bottom: 5px; }
+    .form-borrowell .block-form label {
+      display: inline-block;
+      font-size: 15px;
+      font-weight: bold;
+      padding: 5px;
+      width: 100%; }
+    .form-borrowell .block-form input {
+      border: none;
+      border: 1px solid rgba(123, 144, 113, 0.3);
+      box-sizing: border-box;
+      color: black;
+      font-size: 20px;
+      outline: none;
+      padding: 15px;
+      width: 100%; }
+      .form-borrowell .block-form input::placeholder {
+        color: #7B7271;
+        font-size: 20px; }
+    .form-borrowell .block-form input[type="file"] {
+      display: none; }
+    .form-borrowell .block-form input.invalid {
+      border: 1px solid #FB503B; }
+  .form-borrowell .block-thumbnail label {
+    cursor: pointer; }
+  .form-borrowell button[type="submit"] {
+    background-color: #FB503B;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-family: "Karla", sans-serif;
+    font-size: 20px;
+    margin-top: 10px;
+    outline: none;
+    padding: 10px;
+    width: 100%; }
+  .form-borrowell textarea {
+    border: none;
+    border: 1px solid rgba(123, 144, 113, 0.3);
+    font-family: "Karla", sans-serif;
+    font-size: 15px;
+    height: 180px;
+    outline: none;
+    resize: none;
+    width: 100%; }
+  .form-borrowell select {
+    font-family: "Karla", sans-serif;
+    font-size: 15px;
+    padding: 10px;
+    width: 100%; }
+  .form-borrowell .link-forgot-password {
+    color: black;
+    display: inline-block;
+    font-size: 13px;
+    text-align: center;
+    width: 100%; }
+
+.app-wrapper {
+  display: block;
+  margin: 0 auto;
+  padding: 0 100px;
+  max-width: 1200px; }
+
+.overlay {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 0; }
+
+.back-button {
+  align-items: center;
+  background-color: black;
+  color: white;
+  display: flex;
+  font-size: 20px;
+  padding: 15px;
+  text-decoration: none; }
+  .back-button img {
+    margin-right: 10px;
+    width: 15px; }
+
+.app-container[data-page="home"] {
+  align-items: center;
+  background-image: url("../img/bck_book.jpg");
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative; }
+  .app-container[data-page="home"] .home-overlay {
+    background-color: black;
+    opacity: 0.4; }
+  .app-container[data-page="home"] section {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    z-index: 1; }
+    .app-container[data-page="home"] section .home-message {
+      color: white;
+      font-size: 45px;
+      margin-bottom: 25px; }
+    .app-container[data-page="home"] section form {
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.24);
+      display: flex;
+      width: 640px; }
+      .app-container[data-page="home"] section form input[type="text"] {
+        border: none;
+        box-sizing: border-box;
+        color: #7B7271;
+        font-family: "Karla", sans-serif;
+        font-size: 20px;
+        outline: none;
+        padding: 20px;
+        transition: all 0.3s ease-out;
+        width: 100%; }
+        .app-container[data-page="home"] section form input[type="text"]::placeholder {
+          color: #7B7271;
+          font-family: "Karla", sans-serif;
+          font-size: 20px; }
+      .app-container[data-page="home"] section form button[type="submit"] {
+        background-color: #FB503B;
+        border: none;
+        cursor: pointer; }
+        .app-container[data-page="home"] section form button[type="submit"] img {
+          box-sizing: border-box;
+          height: 20px;
+          margin: 20px;
+          width: 20px; }
+      .app-container[data-page="home"] section form:hover input[type="text"] {
+        background-color: #d8d8d8; }
+    .app-container[data-page="home"] section .error-message {
+      color: #FB503B; }
+    .app-container[data-page="home"] section .link-book-collection {
+      background-color: black;
+      box-sizing: border-box;
+      color: white;
+      font-size: 20px;
+      margin: 40px 0;
+      padding: 15px 30px;
+      text-decoration: none;
+      transition: all 0.2s ease-out; }
+      .app-container[data-page="home"] section .link-book-collection:hover {
+        background-color: #131313; }
+
+.app-container[data-page="backoffice_users"] {
+  justify-content: flex-start;
+  display: flex;
+  height: 100vh; }
+  .app-container[data-page="backoffice_users"] .board-backoffice {
+    align-items: flex-start;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    padding: 50px;
+    width: 100%; }
+    .app-container[data-page="backoffice_users"] .board-backoffice .block {
+      background-color: white;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.24);
+      margin-bottom: 40px;
+      padding: 20px; }
+      .app-container[data-page="backoffice_users"] .board-backoffice .block h2 {
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 30px; }
+    .app-container[data-page="backoffice_users"] .board-backoffice .list-users {
+      box-sizing: border-box;
+      width: 100%; }
+      .app-container[data-page="backoffice_users"] .board-backoffice .list-users .item-user {
+        align-items: center;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0; }
+        .app-container[data-page="backoffice_users"] .board-backoffice .list-users .item-user * {
+          margin-left: 15px; }
+        .app-container[data-page="backoffice_users"] .board-backoffice .list-users .item-user img {
+          border-radius: 50%;
+          width: 60px; }
+        .app-container[data-page="backoffice_users"] .board-backoffice .list-users .item-user-info {
+          align-items: center;
+          display: flex;
+          font-size: 18px; }
+          .app-container[data-page="backoffice_users"] .board-backoffice .list-users .item-user-info .info-label {
+            color: black;
+            font-weight: bold; }
+          .app-container[data-page="backoffice_users"] .board-backoffice .list-users .item-user-info .count-book-user {
+            color: #FB503B; }
+        .app-container[data-page="backoffice_users"] .board-backoffice .list-users .item-user-button-contact {
+          background-color: black;
+          color: white;
+          margin-right: 100px;
+          padding: 10px 15px;
+          text-decoration: none; }
+    .app-container[data-page="backoffice_users"] .board-backoffice .count-users {
+      padding: 50px; }
+      .app-container[data-page="backoffice_users"] .board-backoffice .count-users h2 {
+        margin: 0; }
+      .app-container[data-page="backoffice_users"] .board-backoffice .count-users .total-users {
+        color: #FB503B;
+        font-size: 100px;
+        margin: 20px 0;
+        text-align: center; }
+      .app-container[data-page="backoffice_users"] .board-backoffice .count-users .last-user {
+        font-weight: bold; }
+
+.app-container[data-page="backoffice_books"] {
+  display: flex;
+  height: 100vh;
+  justify-content: flex-start; }
+  .app-container[data-page="backoffice_books"] .board-backoffice {
+    align-items: flex-start;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    padding: 50px;
+    width: 100%; }
+    .app-container[data-page="backoffice_books"] .board-backoffice .block {
+      background-color: white;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.24);
+      margin-bottom: 40px;
+      padding: 20px; }
+      .app-container[data-page="backoffice_books"] .board-backoffice .block h2 {
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 30px; }
+    .app-container[data-page="backoffice_books"] .board-backoffice .list-books {
+      box-sizing: border-box;
+      width: 100%; }
+      .app-container[data-page="backoffice_books"] .board-backoffice .list-books .item-book {
+        align-items: center;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0; }
+        .app-container[data-page="backoffice_books"] .board-backoffice .list-books .item-book img {
+          width: 60px; }
+        .app-container[data-page="backoffice_books"] .board-backoffice .list-books .item-book-info {
+          align-items: center;
+          display: flex;
+          font-size: 18px; }
+          .app-container[data-page="backoffice_books"] .board-backoffice .list-books .item-book-info .info-label {
+            color: black;
+            font-weight: bold; }
+          .app-container[data-page="backoffice_books"] .board-backoffice .list-books .item-book-info p {
+            margin-left: 25px; }
+        .app-container[data-page="backoffice_books"] .board-backoffice .list-books .item-book-button-block .button-show {
+          background-color: black;
+          color: white;
+          margin-right: 50px;
+          padding: 10px 15px;
+          text-decoration: none; }
+        .app-container[data-page="backoffice_books"] .board-backoffice .list-books .item-book-button-block .button-edit {
+          background-color: #FB503B;
+          color: white;
+          margin-right: 100px;
+          padding: 10px 15px;
+          text-decoration: none; }
+    .app-container[data-page="backoffice_books"] .board-backoffice form.form-search-book {
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.24);
+      display: flex;
+      margin-bottom: 20px;
+      width: 640px; }
+      .app-container[data-page="backoffice_books"] .board-backoffice form.form-search-book input[type="text"] {
+        border: none;
+        box-sizing: border-box;
+        color: #7B7271;
+        font-family: "Karla", sans-serif;
+        font-size: 20px;
+        outline: none;
+        padding: 20px;
+        width: 100%; }
+        .app-container[data-page="backoffice_books"] .board-backoffice form.form-search-book input[type="text"]::placeholder {
+          color: #7B7271;
+          font-family: "Karla", sans-serif;
+          font-size: 20px; }
+      .app-container[data-page="backoffice_books"] .board-backoffice form.form-search-book button[type="submit"] {
+        background-color: #FB503B;
+        border: none;
+        cursor: pointer; }
+        .app-container[data-page="backoffice_books"] .board-backoffice form.form-search-book button[type="submit"] img {
+          box-sizing: border-box;
+          height: 20px;
+          margin: 20px;
+          width: 20px; }
+
+.app-container[data-page="login"] {
+  align-items: center;
+  background-image: url("../img/bck_book.jpg");
+  display: flex;
+  justify-content: center; }
+  .app-container[data-page="login"] .login-overlay {
+    background-color: black;
+    opacity: 0.3; }
+  .app-container[data-page="login"] form {
+    position: relative;
+    z-index: 1; }
+
+.app-container[data-page="register"] {
+  align-items: center;
+  background-image: url("../img/bck_book.jpg");
+  display: flex;
+  justify-content: center; }
+  .app-container[data-page="register"] .login-overlay {
+    background-color: black;
+    opacity: 0.3; }
+  .app-container[data-page="register"] form {
+    position: relative;
+    z-index: 1; }
+
+.app-container[data-page="email-password"] {
+  align-items: center;
+  background-image: url("../img/bck_book.jpg");
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  .app-container[data-page="email-password"] .login-overlay {
+    background-color: black;
+    opacity: 0.3; }
+  .app-container[data-page="email-password"] .success-message {
+    color: white;
+    margin-bottom: 20px;
+    z-index: 1; }
+  .app-container[data-page="email-password"] form {
+    position: relative;
+    z-index: 1; }
+
+.app-container[data-page="reset-password"] {
+  align-items: center;
+  background-image: url("../img/bck_book.jpg");
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  .app-container[data-page="reset-password"] .login-overlay {
+    background-color: black;
+    opacity: 0.3; }
+  .app-container[data-page="reset-password"] form {
+    position: relative;
+    z-index: 1; }
+
+.app-container[data-page="book-collection"] {
+  align-items: center;
+  display: flex;
+  justify-content: center; }
+  .app-container[data-page="book-collection"] section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; }
+    .app-container[data-page="book-collection"] section a.block-category {
+      align-items: center;
+      background-color: white;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.24);
+      color: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 25px;
+      padding: 65px;
+      text-decoration: none; }
+      .app-container[data-page="book-collection"] section a.block-category img {
+        filter: grayscale(1);
+        margin-bottom: 20px;
+        transition: all 0.2s ease-out; }
+      .app-container[data-page="book-collection"] section a.block-category p.title-category {
+        font-size: 25px; }
+      .app-container[data-page="book-collection"] section a.block-category:hover img {
+        filter: grayscale(0); }
+
+.app-container[data-page="book-category"] {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  .app-container[data-page="book-category"] .back-button {
+    margin-top: 40px; }
+  .app-container[data-page="book-category"] .header-result {
+    color: #7B7271;
+    font-size: 30px;
+    padding: 50px 0; }
+    .app-container[data-page="book-category"] .header-result .count-book {
+      color: black;
+      font-weight: bold; }
+    .app-container[data-page="book-category"] .header-result .title-category {
+      color: black;
+      font-weight: bold; }
+  .app-container[data-page="book-category"] section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; }
+    .app-container[data-page="book-category"] section a.block-book {
+      align-items: center;
+      background-color: white;
+      box-sizing: border-box;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.24);
+      color: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 25px;
+      padding: 50px;
+      text-decoration: none;
+      width: 250px; }
+      .app-container[data-page="book-category"] section a.block-book img {
+        filter: grayscale(1);
+        margin-bottom: 20px;
+        transition: all 0.2s ease-out; }
+      .app-container[data-page="book-category"] section a.block-book:hover img {
+        filter: grayscale(0); }
+
+.app-container[data-page="book-single"] {
+  align-content: flex-start;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  height: 100vh; }
+  .app-container[data-page="book-single"] .thumbnail-container {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    overflow: hidden;
+    position: relative; }
+    .app-container[data-page="book-single"] .thumbnail-container .overlay-thumbnail {
+      background-color: black;
+      opacity: 0.4; }
+    .app-container[data-page="book-single"] .thumbnail-container img {
+      position: relative;
+      width: 65%; }
+    .app-container[data-page="book-single"] .thumbnail-container .button-edit {
+      background-color: #FB503B;
+      color: white;
+      font-size: 20px;
+      padding: 10px 15px;
+      position: absolute;
+      right: 0;
+      text-decoration: none;
+      top: 0; }
+  .app-container[data-page="book-single"] .info-container {
+    align-items: flex-start;
+    display: flex;
+    flex: 1.5;
+    flex-direction: column;
+    overflow: auto;
+    padding: 60px;
+    width: 50%; }
+    .app-container[data-page="book-single"] .info-container .back-button {
+      margin-bottom: 40px; }
+    .app-container[data-page="book-single"] .info-container .book-title {
+      font-size: 35px;
+      font-weight: bold;
+      margin-bottom: 50px; }
+    .app-container[data-page="book-single"] .info-container .description-block {
+      margin-bottom: 20px;
+      max-width: 65%;
+      width: 700px; }
+      .app-container[data-page="book-single"] .info-container .description-block span {
+        display: inline-block;
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 8px; }
+      .app-container[data-page="book-single"] .info-container .description-block p {
+        line-height: 18px;
+        word-wrap: break-word; }
+    .app-container[data-page="book-single"] .info-container .link-borrow {
+      color: white;
+      display: inline-block;
+      margin-top: 10px;
+      padding: 15px;
+      text-decoration: none; }
+      .app-container[data-page="book-single"] .info-container .link-borrow[data-state="noBorrowed"] {
+        background-color: #FB503B; }
+      .app-container[data-page="book-single"] .info-container .link-borrow[data-state="Borrowed"] {
+        background-color: #7B7271;
+        opacity: 0.9; }
+    .app-container[data-page="book-single"] .info-container .limit-book, .app-container[data-page="book-single"] .info-container .owner-message {
+      color: #FB503B;
+      font-weight: bold; }
+    .app-container[data-page="book-single"] .info-container .link-login {
+      font-weight: bold;
+      margin-top: 10px; }
+      .app-container[data-page="book-single"] .info-container .link-login a {
+        color: #FB503B; }
+
+.app-container[data-page="book-edit"] {
+  align-items: center;
+  background-attachment: fixed;
+  background-image: url("../img/bck_book.jpg");
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  .app-container[data-page="book-edit"] .book-edit-overlay {
+    background-color: black;
+    opacity: 0.5;
+    position: fixed; }
+  .app-container[data-page="book-edit"] a.button-book-delete {
+    align-items: center;
+    background-color: #FB503B;
+    color: white;
+    display: flex;
+    justify-content: center;
+    margin: 60px 0 30px 0;
+    padding: 30px 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 400px;
+    z-index: 1; }
+    .app-container[data-page="book-edit"] a.button-book-delete img {
+      margin-right: 20px;
+      width: 30px; }
+  .app-container[data-page="book-edit"] form {
+    z-index: 1; }
+
+.app-container[data-page="book-create"] {
+  align-items: center;
+  background-attachment: fixed;
+  background-image: url("../img/bck_book.jpg");
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  .app-container[data-page="book-create"] .book-create-overlay {
+    background-color: black;
+    opacity: 0.5;
+    position: fixed; }
+  .app-container[data-page="book-create"] form {
+    margin: 60px 0;
+    z-index: 1; }
+
+.app-container[data-page="search"] section .header-search {
+  font-size: 30px;
+  padding: 50px 0; }
+.app-container[data-page="search"] section .list-result-book .block-result {
+  align-items: center;
+  background-color: white;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  padding: 15px; }
+  .app-container[data-page="search"] section .list-result-book .block-result .book-title {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px; }
+  .app-container[data-page="search"] section .list-result-book .block-result a {
+    background-color: #FB503B;
+    color: white;
+    margin-right: 50px;
+    padding: 15px; }
+
+.app-container[data-page="profile"] section {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px; }
+  .app-container[data-page="profile"] section .user-infos {
+    align-items: flex-start;
+    display: flex;
+    flex: 1;
+    flex-direction: column; }
+    .app-container[data-page="profile"] section .user-infos .header-user-infos {
+      font-size: 35px;
+      margin-bottom: 20px; }
+    .app-container[data-page="profile"] section .user-infos form {
+      background-color: white;
+      display: inline-flex;
+      margin-top: 10px; }
+      .app-container[data-page="profile"] section .user-infos form label {
+        background-color: #FB503B;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+        padding: 10px; }
+      .app-container[data-page="profile"] section .user-infos form input[type="file"] {
+        display: none; }
+      .app-container[data-page="profile"] section .user-infos form input[type="submit"] {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-family: "Karla", sans-serif;
+        font-weight: bold;
+        outline: none; }
+  .app-container[data-page="profile"] section .user-borrow {
+    align-items: flex-start;
+    display: flex;
+    flex: 1;
+    flex-direction: column; }
+    .app-container[data-page="profile"] section .user-borrow .header-user-borrow {
+      font-size: 35px;
+      margin-bottom: 20px; }
+    .app-container[data-page="profile"] section .user-borrow .list-borrow-book {
+      display: flex;
+      margin-bottom: 20px; }
+      .app-container[data-page="profile"] section .user-borrow .list-borrow-book .block-borrow-book {
+        align-items: center;
+        background-color: white;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.24);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 10px; }
+        .app-container[data-page="profile"] section .user-borrow .list-borrow-book .block-borrow-book img {
+          margin-bottom: 10px; }
+        .app-container[data-page="profile"] section .user-borrow .list-borrow-book .block-borrow-book a.link-borrow {
+          color: black;
+          font-weight: bold;
+          padding: 5px;
+          text-decoration: none; }
+    .app-container[data-page="profile"] section .user-borrow .book-credit span {
+      font-weight: bold; }
+    .app-container[data-page="profile"] section .user-borrow .back-button {
+      margin-top: 40px; }
+
+.app-header {
+  background-color: white;
+  position: fixed;
+  width: 100%;
+  z-index: 100; }
+  .app-header-container {
+    align-items: center;
+    display: flex;
+    height: 12.5vh;
+    justify-content: space-between; }
+    .app-header-container img {
+      height: 40px; }
+    .app-header-container .link-container {
+      align-items: center;
+      display: flex; }
+      .app-header-container .link-container .link-login {
+        color: grey;
+        font-size: 20px;
+        margin-right: 35px; }
+      .app-header-container .link-container .link-logout {
+        color: black;
+        font-size: 15px;
+        font-weight: bold;
+        margin-right: 35px;
+        text-decoration: none; }
+      .app-header-container .link-container .link-profile {
+        color: #FB503B;
+        font-size: 17px;
+        font-weight: bold;
+        margin-right: 35px; }
+      .app-header-container .link-container .link-register {
+        background-color: #FB503B;
+        color: white;
+        display: block;
+        font-size: 20px;
+        padding: 10px 15px;
+        text-decoration: none; }
+      .app-header-container .link-container .img-profile-container {
+        border-radius: 50%;
+        overflow: hidden; }
+        .app-header-container .link-container .img-profile-container img {
+          height: 60px;
+          width: 60px; }
+      .app-header-container .link-container .link-backoffice {
+        background-color: #FB503B;
+        color: white;
+        display: block;
+        font-size: 18px;
+        margin-right: 35px;
+        padding: 10px 15px;
+        text-decoration: none; }
+
+.menu-backoffice {
+  background-color: #FB503B;
+  display: flex;
+  flex-direction: column;
+  padding-top: 50px; }
+  .menu-backoffice a.menu-link {
+    align-items: center;
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    padding: 20px 40px;
+    text-decoration: none; }
+    .menu-backoffice a.menu-link img {
+      margin-right: 10px;
+      width: 25px; }
+    .menu-backoffice a.menu-link span {
+      white-space: nowrap; }
+    .menu-backoffice a.menu-link.isSelected {
+      background-color: #E14532; }
+  .menu-backoffice a:first-child {
+    margin-bottom: 30px; }
+
+.screen-responsive {
+  align-items: center;
+  background-color: white;
+  display: none;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 101; }
+  .screen-responsive img {
+    width: 250px; }
+  .screen-responsive span {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center; }
+
+@media only screen and (max-width: 1336px) {
+  .screen-responsive {
+    display: flex; } }
+.app-container[data-page="error-page"] {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  .app-container[data-page="error-page"] img {
+    width: 300px; }
+  .app-container[data-page="error-page"] span {
+    display: inline-block;
+    font-size: 20px;
+    margin: 25px 0; }
+  .app-container[data-page="error-page"] a {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    text-decoration: none; }
+
+/*# sourceMappingURL=app.css.map */
