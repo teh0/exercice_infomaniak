@@ -87,3 +87,49 @@ Pour l'organisation des données, il y aura 4 tables différentes :
 ```
 
 Le fichier ```server.js``` est le noyaux de l'application. Il va permettre de lier toutes les parties grâce à **Express**. Il va initialiser le moteur de template EJS, utiliser le fichier ```index.js``` du dossier routes pour assurer les liens entre les pages et va rendre les différentes vues ```.ejs``` en front.
+
+# Compte rendu technique de l'exercice
+Avant d'aller plus loin dans les explications, je vous invite à suivre ce scénario d'utilisation pour faire le tour des fonctionnalités de l'application Borrowell. **Pour commencer, je vous inite à cloner le dépot Git**.
+
+### 1. Utilisez l'outil NodeJs
+
+  **On va peupler notre base de données en quelques cliques !**
+  * Allez dans le dossier courant ```node_application``` et lancez la commande  ```node server.js```
+  * Ouvrir le navigateur et connectez-vous au serveur ```localhost:3000```
+  * Sélectionnez la catégorie de livre que vous voulez injecter dans la base de donnée (il est préférable d'injecter toutes les catégories).
+  
+  C'est fait ! La librairie compte maintenant des dizaines de livres. Rendez-vous sur l'application à l'adresse [https://borrowell.championtheo.fr](https://borrowell.championtheo.fr)
+  
+### 2. Navigation en mode guest
+
+  * Vous pouvez utiliser la barre de recherche
+  * Cliquez sur le bouton "voir tous les livres"
+  * Sélectionner une catégorie de livre
+  * Sélectionner un livre.
+  * Vous ne pouvez pas emprunter de livres. Pour pouvoir le faire, **créez-vous un compte**.
+  
+### 3. Navigation en mode Authentifié
+  * Vous pouvez vous rendre sur votre espace utilisateur pour modifier votre image de profil.
+  * Vous pouvez cette fois-ci emprunter un livre en vous rendant sur n'importe quel livre. (Cependant, si le livre a déjà été pris par un autre utilisateur, vous verrez un bouton grisé avec écrit dessus "Livre déjà emprunté".
+  * Depuis votre espace profil, vous pouvez rendre un livre que vous avez emprunté.
+  
+### 4. Navigation en mode Libraire
+  Vous bénéficiez de toutes les fonctionnalités mais vous avez en plus :
+  * L'**accès à un back-office** où vous pouvez gérer les livres (ajouter/éditer/supprimer) ainsi qu'un aperçu de tous les utilisateurs enregistrés sur la plateforme.
+  * Vous avez un petit bouton orange "Editer" sur chaque page présentation d'un livre.
+  
+# Partie Technique
+
+**Outil NodeJs**
+1. [Structure de l'outil]()
+2. [La récupération des données de l’API GoogleBooks]()
+3. [Traitement des données]()
+4. [Injections des données dans la BDD]()
+
+**Application Laravel**
+1. [Structure de l'application]()
+2. [Les routes]()
+3. [Le front dynamique]()
+4. [Authentification]()
+5. [Interaction entre Vue et Model]()
+6. [Gestion des images avec intervention]()
