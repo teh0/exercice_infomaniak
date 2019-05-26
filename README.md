@@ -14,7 +14,7 @@ Pour cet exercice, il y aura **deux principaux** composants :
 | - Accès libre aux différents livres.           | - Accès à un espace personnalisé pour éditer son profil                | - Accès libre aux différents livres                                                                                                                     |
 | - Consultation de la fiche technique du livre. | - Accès libre aux différents livres                                    | - Consultation de la fiche technique du livre (version plus détaillée)                                                                                  |
 | - Ne peut pas emprunter un livre.              | - Consultation de la fiche technique du livre (version plus détaillée) | - Accès à un back-office pour la gestion des utilisateurs et des livres (actions [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)). |
-|                                                | - Possibilité d'emprunter un livre                                     |                                                                                                                                                         |
+|                                                | - Possibilité d'emprunter un livre (**3 max**)                           |                                                                                                                                                         |
 
 
 Pour réaliser la plateforme, j'ai choisi d'utiliser **Laravel** car il s'accorde parfaitement avec ce genre d'application (CRUD Application). 
@@ -35,7 +35,7 @@ Pour l'organisation des données, il y aura 4 tables différentes :
 
 ### 2. L'Application en NodeJS
 
-  Pour réaliser cette plateforme, il faut avoir un bon stock de livres dans notre base de donnée. Les remplir un à un représenterait un travail long et compliqué.
+  Pour réaliser cette plateforme, il faut avoir un bon stock de livres dans notre base de données. Les remplir un à un représenterait un travail long et compliqué.
   Plutôt que de faire cela, je me suis aidé de l'API Google Book. En créant une application NodeJS, on peut exploiter cette API Google pour récupérer un échantillon de livres en fonction de la catégorie renseignée dans la requête :
   
   ```js
@@ -51,7 +51,7 @@ Pour l'organisation des données, il y aura 4 tables différentes :
   Modules utilisés :
   - [Axios](https://www.npmjs.com/package/axios), un client HTTP basé sur les Promesses.
   - [Express](https://www.npmjs.com/package/express),  une librairie qui permet de créer une application Web plus simplement. 
-  - [Mysql](https://www.npmjs.com/package/mysql), un module Nodejs permettant d'interagir avec une base de donnée mysql.
+  - [Mysql](https://www.npmjs.com/package/mysql), un module Nodejs permettant d'interagir avec une base de données mysql.
   - [Moment.js](https://momentjs.com/), une librairie Javascript permettant de manipuler les dates.
   
   **Structure de l'application**
@@ -136,7 +136,7 @@ Rendez-vous sur l'application à l'adresse [https://borrowell.championtheo.fr](h
 
 ## Structure de l'outil
 
-La structure de l'application est quasiment la même que celle énoncée dans la note d'intention. On rappelle que cet outil à pour but de peupler rapidement et facilement la base de donnée de la plateforme de livre à partir des données récupérées sur l'API Google Book.
+La structure de l'application est quasiment la même que celle énoncée dans la note d'intention. On rappelle que cet outil à pour but de peupler rapidement et facilement la base de données de la plateforme de livres à partir des données récupérées sur l'API Google Book.
 [Voici une **démonstration vidéo** du résultat de l'outil](https://www.youtube.com/watch?v=fga4MmZZMuY&feature=youtu.be).
 
 ## La récupération des données de l’API GoogleBooks
@@ -172,11 +172,11 @@ Ainsi, la requête est dynamique en **fonction du choix de l'utilisateur**.
 ## Traitement des données
 
 Une fois les données récupérées, il faut effectuer des traitements et des filtres afin d'injecter seulement les livres qui **respectent certaines conditions** : 
-  * Le livre doit posséder une description, un auteur, une miniature, un titre, un nombre de page, une langue. Autrement dit, il ne faut pas que ces champs soit vides (NULL).
-  * Le livre ne doit pas être déjà présent dans la base de donnée.
+  * Le livre doit posséder une description, un auteur, une miniature, un titre, un nombre de pages, une langue. Autrement dit, il ne faut pas que ces champs soient vides (NULL).
+  * Le livre ne doit pas être déjà présent dans la base de données.
 
 Pour se faire j'ai décomposé le traitement en 3 étapes : 
-#### 1. On créé un tableau d'objets comportant chaque livre de la requête en ne gardant que les propriétés qui nous interesse
+#### 1. Création d'un tableau d'objets qui comporte chaque livre de la requête en ne gardant que les propriétés qui nous interessent
 
   ```js
   //dataBooks is the result of all books retrieved from Axios
@@ -195,7 +195,7 @@ Pour se faire j'ai décomposé le traitement en 3 étapes :
   });
   ```
 
-#### 2. On filtre les livres dont toutes les propriétés sont présentes et sont non NULL et on les stock dans un tableau ```listValidBooks```
+#### 2. Filtre des livres dont toutes les propriétés sont présentes et sont non NULL et stockage dans un tableau ```listValidBooks```
 
   ```js
   // If a value of props is undefined or total props number != 7, we don't keep the book
@@ -204,7 +204,7 @@ Pour se faire j'ai décomposé le traitement en 3 étapes :
       listValidBooks.push(newdataBook);
   }
   ```
-### 3. On vérifie si le livre n'est pas déjà présent dans la base de donnée de la librairie. Pour cela, on compare le titre et la description de chaque livre de la BDD avec ceux récupérés dans la requête Axios
+#### 3. On vérifie si le livre n'est pas déjà présent dans la base de données de la librairie. Pour cela, on compare le titre et la description de chaque livre de la BDD avec ceux récupérés dans la requête Axios
 
   ```js
   // If a value of props is undefined or total props number != 6, we don't keep the book
@@ -226,8 +226,8 @@ Pour se faire j'ai décomposé le traitement en 3 étapes :
   ```
 ## Injection des données dans la BDD
 
-Pour se connecter à la base de donnée locale de la plateforme, j'ai utilisé [Mysql](https://www.npmjs.com/package/mysql).
-Il faut d'abord se connecter avec la BDD :
+Pour se connecter à la base de données locale de la plateforme, j'ai utilisé [Mysql](https://www.npmjs.com/package/mysql).
+Il faut d'abord se connecter à la BDD :
 
 ```js
 //Instance local database connection 
@@ -240,7 +240,7 @@ const connection = mysql.createConnection({
 connection.connect();
 ``` 
 
-A partir de cette connexion, on peut effectuer n'importe quel traitement sur la base de donnée. J'ai donc inséré dans la BDD le contenu de mon tableau ```listNewBooksStored``` comportant tous les livres valides.
+A partir de cette connexion, on peut effectuer n'importe quel traitement sur la base de données. J'ai donc inséré dans la BDD le contenu de mon tableau ```listNewBooksStored``` comportant tous les livres valides.
 
 ```js
 listValidBooks.forEach(element => {
@@ -257,7 +257,7 @@ listValidBooks.forEach(element => {
 
 ## Structure de l'application 
 
-[Laravel](https://laravel.com/) est un framework très complet. Je ne vais donc pas détailler toute la structure du framework mais plutôt de l'organisation **Modèle Vue Contrôleur** mise en place.
+[Laravel](https://laravel.com/) est un framework très complet. Je ne vais donc pas détailler toute la structure du framework mais plutôt l'organisation **Modèle Vue Contrôleur** mise en place.
 
 * **Les Vues**
 
@@ -268,11 +268,11 @@ listValidBooks.forEach(element => {
   | admins    | Vues du back-office                                                           |
   | auth      | Vues pour la gestion d'authentification (natives à Laravel)                   |
   | books     | Vues pour l'affichage et l'éditions des livres                                |
-  | partials  | Morceaux de vue à insérer dans d'autres vues (header, footer, sideMenu ...)   |
-  | templates | Modèle de page communes toutes les vues                                       |
-  | users     | Vue pour le profil utilisateur                                                |
+  | partials  | Blocs de vues à insérer dans d'autres vues (header, footer, sideMenu ...)     |
+  | templates | Modèle de pages communes à toutes les vues                                    |
+  | users     | Vues pour le profil utilisateur                                               |
 
-  Pour le dossier Scss, j'ai repris la même organisation pour une question de cohérence.
+  Pour le dossier Scss, j'ai repris la même organisation par souci de cohérence.
 
 * **Les Modèles**
 
@@ -287,10 +287,10 @@ listValidBooks.forEach(element => {
 
   | Contrôleurs | Rôle                                                                      |
   |-------------|---------------------------------------------------------------------------|
-  | Users       | Gère la partie profil des utilisateur (update la photo de profil)         |
-  | Admin       | Gère l'affiche du Backoffice                                              |
+  | Users       | Gère la partie profil des utilisateurs (update la photo de profil)        |
+  | Admin       | Gère l'affiche du back-office                                             |
   | Books       | Gère l'affichage et les traitements des livres (logique CRUD)             |
-  | Category    | Gère la logique de regroupement des livre à l'affichage                   |
+  | Category    | Gère la logique de regroupements des livres à l'affichage                 |
 
 ## Les routes
 
@@ -330,15 +330,15 @@ Voici un tableau récapitulatif de toutes les routes de l'application
 ```
 ## Le front dynamique
 
-Laravel possède le moteur de template [Blade](https://laravel.com/docs/5.8/blade). Il permet d'effectuer facilement des conditions d'affichages dans les vues grâces à *des directives conditionnelles*. Voici un exemple avec l'affichage des thumbnails des livres :
+Laravel possède le moteur de template [Blade](https://laravel.com/docs/5.8/blade). Il permet d'effectuer facilement des conditions d'affichage dans les vues grâce à *des directives conditionnelles*. Voici un exemple avec l'affichage des thumbnails des livres :
 
 ```php
 <img src="@if($book->fromApi) {{ $book->large_thumbnail }} @else {{ asset('upload/thumbnails').'/'.$book->large_thumbnail }} @endif" alt="Page de couverture du livre {{ $book->title }}">
 ```
-Dans cet exemple, on peut voir *3 directives de Blade* :
+Dans cet exemple, nous pouvons voir *3 directives de Blade* :
 * ```@if @else``` qui permet d'afficher ou non des éléments en fonction de la condition.
-* ```{{ asset('...').'/'}}``` qui permet de récupérer le chemin absolue du dossier public du site.
-* ```{{ $book->title }}``` qui permet d'afficher une variable injectée dans la vue grâce au contrôleur.
+* ```{{ asset('...').'/'}}``` qui permet de récupérer le chemin absolu du dossier public du site.
+* ```{{ $book->title }}``` qui permet d'afficher une variable injectée dans la vue grâce aux contrôleurs.
 
 Il existe aussi des directives très pratiques pour afficher du contenu en fonction de **l'état d'authentification** de l'utilsateur. On peut prendre l'exemple avec l'affichage du bouton "Editer le livre" dans la fiche descriptif de chaque livre :
 
@@ -354,9 +354,9 @@ Le lien ne s'affiche que si l'utilisateur **est connecté et possède le rôle a
 
 ## Gestion des images avec le module Intervention Image
 
-Lors de la création d'un livre ou de la modification de l'image de profil d'utilisateur, il faut **créer une image puis la stocker dans le dossier uploads du site**. J'ai choisi d'utiliser [Intervention Image](http://image.intervention.io/). C'est une librairie PHP qui permet de manipuler les images.
+Lors de la création d'un livre ou de la modification de l'image de profil de l'utilisateur, il faut **créer une image puis la stocker dans le dossier uploads du site**. J'ai choisi d'utiliser [Intervention Image](http://image.intervention.io/). C'est une librairie PHP qui permet de manipuler les images.
 
-Voici un exemple d'utilisation de la librairie dans un contrôleur
+Voici un exemple d'utilisation de la librairie dans un contrôleur :
 ```php
 $data_large_thumbnail = $request->file('book_large_thumbnail');
 $prefix_thumbnail = $this->formateString($book->title).time();
