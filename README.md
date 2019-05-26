@@ -133,3 +133,119 @@ Rendez-vous sur l'application à l'adresse [https://borrowell.championtheo.fr](h
 4. [Authentification]()
 5. [Interaction entre Vue et Model]()
 6. [Gestion des images avec intervention]()
+
+# [Outil NodeJs] - Structure de l'outil
+
+La structure de l'application est quasiment la même que celle énoncée dans la note d'intention. On rappelle que cet outil à pour but de peupler rapidement la table de donnée de la plateforme de livre à partir des données récupérées sur l'API Google Book.
+[Voici une **démonstration vidéo** du résultat de l'outil]().
+
+# [Outil NodeJs] - La récupération des données de l’API GoogleBooks
+
+J'ai restreints la recherche de livres à 6 catégorie différentes : PHP, HTML, CSS, JavaScript, Python, NodeJs. Comme vous avez pu le voir sur le [vidéo](), je peux les choisir avec un bouton select
+
+```html
+<form action="" method="POST">
+    <select name="category">
+        <option value="php">PHP</option>
+        <option value="javascript">JavaScript</option>
+        <option value="html">HTML</option>
+        <option value="css">CSS</option>
+        <option value="python">Python</option>
+        <option value="nodejs">NodeJs</option>
+    </select>
+    <button type="submit">Choisir</button>
+</form>
+```
+A la soumission du formulaire, je récupère le paramètre ```category``` grâce à express et je fais uen requête sur l'api grâce à [Axios](https://www.npmjs.com/package/axios).
+```js
+    app.post('/', function (req, res) {
+        category = req.body.category;
+        ...
+    }
+```
+Ainsi, la requête est dynamique en fonction du choix de l'utilisateur.
+
+# [Outil NodeJs] - Traitement des données
+
+Une fois les données récupérées, il faut effectuer des traitements et des filtres afin d'injecter seulement les livres qui respectent certaines conditions : 
+  * Le livre doit posseder une description, un auteur, une miniature, un titre, un nombre de page, une langue. Autrement dit, il ne faut pas que ces champs soit vides (NULL).
+  * Le livre ne doit pas être présent dans la base de donnée.
+
+Pour se faire j'ai décomposé le traitement en 3 étapes : 
+### 1. On créé un tableau d'objets comportant chaque livre de la requête en ne gardant que les propriétés qui nous interesse
+
+  ```js
+  //dataBooks is the result of all books retrieved from Axios
+  dataBooks.forEach(element => {
+    let newdataBook = {
+        title: element.volumeInfo.title,
+        authors: element.volumeInfo.authors,
+        description: element.volumeInfo.description,
+        pageCount: element.volumeInfo.pageCount,
+        lang: element.volumeInfo.language,
+
+    };
+    if (element.volumeInfo.imageLinks) {
+        newdataBook.small_thumbnail = element.volumeInfo.imageLinks.thumbnail.replace("http", "https");
+    }
+  });
+  ```
+
+### 2. On filtre les livres dont toutes les propriétés sont présentes et non NULL et on les stock dans un tableau ```listValidBooks```
+
+  ```js
+  // If a value of props is undefined or total props number != 7, we don't keep the book
+  if (Object.values(newdataBook).length === 6 && !Object.values(newdataBook).includes(undefined)) {
+      newdataBook.large_thumbnail = newdataBook.small_thumbnail.replace('zoom=1', 'zoom=0.5');
+      listValidBooks.push(newdataBook);
+  }
+  ```
+### 3. On vérifie si le livre n'est pas déjà présent dans la base de donnée de la librairie. Pour cela, on compare le titre et la description de chaque livre de la BDD avec ceux récupérés dans la requête Axios
+
+  ```js
+  // If a value of props is undefined or total props number != 7, we don't keep the book
+  let listTitleBookStored = [];
+  let listDescriptionBookStored = [];
+  let listNewBooksStored = [];
+  listBookStored.forEach(element => {
+      listTitleBookStored.push(element.title);
+      listDescriptionBookStored.push(element.description);
+  });
+
+  listValidBooks.forEach(element => {
+      if (!listTitleBookStored.includes(element.title) && !listDescriptionBookStored.includes(encodeURI(element.description))) {
+          listNewBooksStored.push(element);
+          ... 
+          //INSERT BOOKS
+      }
+  });
+  ```
+# [Outil NodeJs] - Injections des données dans la BDD
+
+Pour se connecter à la base de donnée locale de la plateforme, j'ai utilisé [Mysql](https://www.npmjs.com/package/mysql).
+Il faut d'abord se connecter avec la BDD :
+
+```js
+//Instance local database connection 
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'infomaniak',
+});
+connection.connect();
+``` 
+
+A partir de cette connection, on peut effectuer n'importe quel traitement sur la base de donnée. J'ai donc inséré dans la BDD le contenu de mon tableau ```listNewBooksStored``` comportant tous les livres valides.
+
+```js
+listValidBooks.forEach(element => {
+    if (!listTitleBookStored.includes(element.title) && !listDescriptionBookStored.includes(encodeURI(element.description))) {
+        listNewBooksStored.push(element);
+        connection.query(`INSERT INTO ${table} (category_id, title, authors, small_thumbnail, large_thumbnail, description, pageCount, lang, fromApi, created_at, updated_at) 
+        VALUES ("${categroyID[category]}", "${element.title}", "${element.authors}", "${element.small_thumbnail}", "${element.large_thumbnail}", "${encodeURI(element.description)}", "${element.pageCount}", "${element.lang}", true, "${moment().format('YYYY-MM-DD HH:mm:ss')}", "${moment().format('YYYY-MM-DD HH:mm:ss')}")`, function (error, results, fields) {
+            if (error) throw error;
+        });
+    }
+});
+```

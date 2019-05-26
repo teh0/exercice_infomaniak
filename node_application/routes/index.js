@@ -63,12 +63,11 @@ module.exports = function (app) {
 
                         };
                         if (element.volumeInfo.imageLinks) {
-                            newdataBook.small_thumbnail = element.volumeInfo.imageLinks.thumbnail.replace("http", "https");
+                            newdataBook.small_thumbnail = element.volumeInfo.imageLinks.thumbnail.replace('http', 'https');
                         }
                         // If a value of props is undefined or total props number != 7, we don't keep the book
                         if (Object.values(newdataBook).length === 6 && !Object.values(newdataBook).includes(undefined)) {
-                            let thumb_regex = /zoom=1/gi;
-                            newdataBook.large_thumbnail = newdataBook.small_thumbnail.replace(thumb_regex, 'zoom=0.5');
+                            newdataBook.large_thumbnail = newdataBook.small_thumbnail.replace('zoom=1', 'zoom=0.5');
                             listValidBooks.push(newdataBook);
                         }
                     });
