@@ -89,18 +89,11 @@ Pour l'organisation des données, il y aura 4 tables différentes :
 Le fichier ```server.js``` est le noyaux de l'application. Il va permettre de lier toutes les parties grâce à **Express**. Il va initialiser le moteur de template EJS, utiliser le fichier ```index.js``` du dossier routes pour assurer les liens entre les pages et va rendre les différentes vues ```.ejs``` en front.
 
 # Compte rendu technique de l'exercice
-Avant d'aller plus loin dans les explications, voici un **scénario d'utilisation** pour faire le tour des fonctionnalités de l'application Borrowell. **Pour commencer, je vous invite à cloner le dossier node_application du projet**.
+Avant d'aller plus loin dans les explications, voici un **scénario d'utilisation** pour faire le tour des fonctionnalités de l'application Borrowell.
 
-### 1. Utilisez l'outil NodeJs
-
-  **On va peupler notre base de données en quelques cliques !**
-  * Avec une ligne de commande, allez dans le dossier ```node_application``` et lancez la commande  ```node server.js```.
-  * Ouvrir le navigateur et connectez-vous au serveur à l'adresse [localhost:3000](localhost:3000).
-  * Sélectionnez la catégorie de livre que vous voulez injecter dans la base de donnée (il est préférable d'injecter toutes les catégories).
+Rendez-vous sur l'application à l'adresse [https://borrowell.championtheo.fr](https://borrowell.championtheo.fr).
   
-  C'est fait ! La librairie compte maintenant des dizaines de livres. Rendez-vous sur l'application à l'adresse [https://borrowell.championtheo.fr](https://borrowell.championtheo.fr).
-  
-### 2. Navigation en mode guest
+### 1. Navigation en mode guest
 
   * Vous pouvez utiliser la barre de recherche.
   * Cliquez sur le bouton "voir tous les livres".
@@ -108,12 +101,19 @@ Avant d'aller plus loin dans les explications, voici un **scénario d'utilisatio
   * Sélectionner un livre.
   * Vous ne pouvez pas emprunter de livres. Pour pouvoir le faire, **créez-vous un compte**.
   
-### 3. Navigation en mode Authentifié
+### 2. Navigation en mode Authentifié
   * Vous pouvez vous rendre sur votre espace utilisateur pour modifier votre image de profil.
   * Vous pouvez cette fois-ci emprunter un livre en vous rendant sur n'importe quel livre. (Cependant, si le livre est déjà emprunté par un autre utilisateur, vous verrez un bouton grisé avec écrit dessus "Livre déjà emprunté".
   * Depuis votre espace profil, vous pouvez rendre un livre que vous avez emprunté.
   
-### 4. Navigation en mode Libraire
+### 3. Navigation en mode Libraire
+  Pour cette partie, il faut vous connecter avec un compte libraire :
+  ```js
+  let libraire = {
+    email: "tochampion38@gmail.com",
+    password: "1234567897911111977!"
+  }
+  ```
   Vous bénéficiez de toutes les fonctionnalités mais vous avez en plus :
   * L'**accès à un back-office** où vous pouvez gérer les livres (ajouter/éditer/supprimer) ainsi qu'un aperçu de tous les utilisateurs enregistrés sur la plateforme (possibilité de leur envoyer un mail).
   * Vous avez un petit bouton orange "Editer" sur chaque page présentation d'un livre.
