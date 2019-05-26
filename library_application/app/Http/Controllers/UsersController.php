@@ -15,10 +15,21 @@ class UsersController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * profile
+     *
+     * @return void
+     */
     public function profile() {
         return view('users.profile');
     }
 
+    /**
+     * update_avatar
+     *
+     * @param Request $request
+     * @return void
+     */
     public function update_avatar(Request $request) {
         $user = Auth::user();
         if($request->hasFile('avatar')) {
