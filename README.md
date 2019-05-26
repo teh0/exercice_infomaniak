@@ -130,16 +130,16 @@ Rendez-vous sur l'application à l'adresse [https://borrowell.championtheo.fr](h
 1. [Structure de l'application]()
 2. [Les routes]()
 3. [Le front dynamique]()
-4. [Authentification]()
-5. [Interaction entre Vue et Model]()
-6. [Gestion des images avec intervention]()
+4. [Gestion des images avec le module Intervention]()
 
-# [Outil NodeJs] - Structure de l'outil
+# [Outil NodeJs] 
+
+# Structure de l'outil
 
 La structure de l'application est quasiment la même que celle énoncée dans la note d'intention. On rappelle que cet outil à pour but de peupler rapidement la table de donnée de la plateforme de livre à partir des données récupérées sur l'API Google Book.
 [Voici une **démonstration vidéo** du résultat de l'outil]().
 
-# [Outil NodeJs] - La récupération des données de l’API GoogleBooks
+# La récupération des données de l’API GoogleBooks
 
 J'ai restreints la recherche de livres à 6 catégorie différentes : PHP, HTML, CSS, JavaScript, Python, NodeJs. Comme vous avez pu le voir sur le [vidéo](), je peux les choisir avec un bouton select
 
@@ -165,7 +165,7 @@ A la soumission du formulaire, je récupère le paramètre ```category``` grâce
 ```
 Ainsi, la requête est dynamique en fonction du choix de l'utilisateur.
 
-# [Outil NodeJs] - Traitement des données
+# Traitement des données
 
 Une fois les données récupérées, il faut effectuer des traitements et des filtres afin d'injecter seulement les livres qui respectent certaines conditions : 
   * Le livre doit posseder une description, un auteur, une miniature, un titre, un nombre de page, une langue. Autrement dit, il ne faut pas que ces champs soit vides (NULL).
@@ -220,7 +220,7 @@ Pour se faire j'ai décomposé le traitement en 3 étapes :
       }
   });
   ```
-# [Outil NodeJs] - Injections des données dans la BDD
+# Injections des données dans la BDD
 
 Pour se connecter à la base de donnée locale de la plateforme, j'ai utilisé [Mysql](https://www.npmjs.com/package/mysql).
 Il faut d'abord se connecter avec la BDD :
@@ -248,4 +248,119 @@ listValidBooks.forEach(element => {
         });
     }
 });
+```
+# [Application Laravel] 
+
+# Structure de l'application 
+
+Laravel est un framework très complet. Je ne vais donc pas détailler toutes la structure du framework mais plutôt de l'organisation Model Vue Controlleurs mise en place.
+
+* **Les Vues**
+
+  Les vues sont organisées en 6 parties
+
+  | Parties   | Description                                                                   |
+  |-----------|-------------------------------------------------------------------------------|
+  | admins    | Vues du back-office                                                           |
+  | auth      | Vues pour la gestion d'authentification (natives à Laravel)                   |
+  | books     | Vues pour l'affichage et l'éditions des livres                                |
+  | partials  | Composants de vue à insérer dans d'autres vues (header, footer, sideMenu ...) |
+  | templates | Modèle de page pour toutes les vues                                           |
+  | users     | Vue pour le profil utilisateur                                                |
+
+  Pour le dossier Scss, j'ai repris la même organisation pour une question de cohérence.
+
+* Les Models
+
+  Il y a 3 tables différentes
+  * Book
+  * Users
+  * Category
+
+  Pour voir plus en détail les champs, je vous invite à regarder les migrations de laravel ```database/migrations```
+
+* Les Contrôleurs (ceux que j'ai créé)
+
+  | Contrôleurs | Rôle                                                                      |
+  |-------------|---------------------------------------------------------------------------|
+  | Users       | Gère la partie profil des utilisateur (update la photo de profil)         |
+  | Admin       | Gère l'affiche du Backoffice                                              |
+  | Books       | Gère l'affichage et les traitements des livres (logique CRUD)             |
+  | Category    | Gère la logique de regroupement des livre à l'affichage                   |
+
+# Les routes
+
+Vous pouvez retrouver toutes les routes dans le fichier ```web.php```
+Voici un tableau récapitulatif de toutes les routes de l'application
+
+```bash
++--------+----------+----------------------------------------+------------------+------------------------------------------------------------------------+--------------+
+| Domain | Method   | URI                                    | Name             | Action                                                                 | Middleware   |
++--------+----------+----------------------------------------+------------------+------------------------------------------------------------------------+--------------+
+|        | GET|HEAD | /                                      | home             | Closure                                                                | web          |
+|        | GET|HEAD | admin/backoffice/{view}                | backoffice       | App\Http\Controllers\AdminController@displayBackoffice                 | web,admin    |
+|        | GET|HEAD | api/user                               |                  | Closure                                                                | api,auth:api |
+|        | GET|HEAD | book/add                               | createBook       | App\Http\Controllers\BookController@create                             | web,admin    |
+|        | POST     | book/add                               | storeBook        | App\Http\Controllers\BookController@store                              | web,admin    |
+|        | POST     | book/borrow/{id_book}                  | borrowBook       | App\Http\Controllers\BookController@borrow                             | web          |
+|        | GET|HEAD | book/collection                        | collectionBook   | App\Http\Controllers\CategoryController@index                          | web          |
+|        | GET|HEAD | book/collection/{slug_categ}           | categoryBook     | App\Http\Controllers\CategoryController@show                           | web          |
+|        | GET|HEAD | book/collection/{slug_categ}/{id_book} | singleBook       | App\Http\Controllers\BookController@show                               | web          |
+|        | POST     | book/delete/{id_book}                  | deleteBook       | App\Http\Controllers\BookController@destroy                            | web,admin    |
+|        | GET|HEAD | book/edit/{id_book}                    | editBook         | App\Http\Controllers\BookController@edit                               | web,admin    |
+|        | POST     | book/edit/{id_book}                    | updateBook       | App\Http\Controllers\BookController@update                             | web,admin    |
+|        | POST     | book/search                            | searchBook       | App\Http\Controllers\BookController@search                             | web          |
+|        | POST     | book/unborrow/{id_book}                | unborrowBook     | App\Http\Controllers\BookController@unborrow                           | web          |
+|        | GET|HEAD | login                                  | login            | App\Http\Controllers\Auth\LoginController@showLoginForm                | web,guest    |
+|        | POST     | login                                  |                  | App\Http\Controllers\Auth\LoginController@login                        | web,guest    |
+|        | POST     | logout                                 | logout           | App\Http\Controllers\Auth\LoginController@logout                       | web          |
+|        | POST     | password/email                         | password.email   | App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail  | web,guest    |
+|        | GET|HEAD | password/reset                         | password.request | App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm | web,guest    |
+|        | POST     | password/reset                         | password.update  | App\Http\Controllers\Auth\ResetPasswordController@reset                | web,guest    |
+|        | GET|HEAD | password/reset/{token}                 | password.reset   | App\Http\Controllers\Auth\ResetPasswordController@showResetForm        | web,guest    |
+|        | GET|HEAD | register                               | register         | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web,guest    |
+|        | POST     | register                               |                  | App\Http\Controllers\Auth\RegisterController@register                  | web,guest    |
+|        | GET|HEAD | user/profile                           | profile          | App\Http\Controllers\UsersController@profile                           | web,auth     |
+|        | POST     | user/profile                           | update_avatar    | App\Http\Controllers\UsersController@update_avatar                     | web,auth     |
++--------+----------+----------------------------------------+------------------+------------------------------------------------------------------------+--------------+
+```
+# Le front dynamique
+
+Laravel possède le moteur de template [Blade](https://laravel.com/docs/5.8/blade). Il permet d'effectuer facilement des conditions d'affichages dans les vues grâces à des directives conditionnelles. Voici un exemple avec l'affichage des thumbnails des livres :
+
+```php
+<img src="@if($book->fromApi) {{ $book->large_thumbnail }} @else {{ asset('upload/thumbnails').'/'.$book->large_thumbnail }} @endif" alt="Page de couverture du livre {{ $book->title }}">
+```
+Dans cet exemple, on peut voir 3 directives de Blade :
+* ```@if @else``` qui permet d'afficher ou non des élements en fonction de la condition.
+* ```{{ asset('...').'/'}}``` qui permet de récupérer d'obtenir le chemin absolue du dossier public du site
+* ```{{ $book->title }}``` qui permet d'afficher une variable injectée dans la vue grâce au contrôleur
+
+Il existe aussi des directives très pratiques pour afficher du contenu en fonction de l'état d'authentification de l'utilsateur. On peut prendre l'exemple avec l'affichage du bouton "Editer le livre" dans la foche descriptif de chaque livre :
+
+```php
+@auth
+    @if (Auth::user()->role == 'admin')
+    <a class="button-edit" href="{{ route('editBook', $book->id) }}">Éditer</a>
+        
+    @endif
+@endauth
+```
+Le lien ne s'affiche que si l'utilisateur est connecté et possède le rôle admin
+
+# Gestion des images avec le module Intervention
+
+Lors de la création d'un livre ou de la modification de l'image de profil d'utilisateur, il faut créer une image pour pouvoir la stocker dans le dossier uploads du site. J'ai choisi d'utiliser [Intervention Image](http://image.intervention.io/). C'est une librairie PHP permettant de manipuler les images. On peut effectuer tout un tas de traitements solides avec. 
+
+Voici un exemple d'utilisation de la librairie dans un contrôleur
+```php
+$data_large_thumbnail = $request->file('book_large_thumbnail');
+$prefix_thumbnail = $this->formateString($book->title).time();
+$name_large_thumbnail = $prefix_thumbnail.'_large.'. $data_large_thumbnail->getClientOriginalExtension();
+$name_small_thumbnail = $prefix_thumbnail.'_small.'. $data_large_thumbnail->getClientOriginalExtension();
+
+Image::make($data_large_thumbnail)->save( public_path('/upload/thumbnails/'.$name_large_thumbnail) );
+Image::make($data_large_thumbnail)->resize(128,181)->save( public_path('/upload/thumbnails/'.$name_small_thumbnail) );
+$book->large_thumbnail = $name_large_thumbnail;
+$book->small_thumbnail = $name_small_thumbnail;
 ```
