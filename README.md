@@ -274,7 +274,7 @@ listValidBooks.forEach(element => {
 
   Pour le dossier Scss, j'ai repris la même organisation pour une question de cohérence.
 
-* Les Modèles
+* **Les Modèles**
 
   Il y a 3 tables différentes
   * Books
@@ -283,7 +283,7 @@ listValidBooks.forEach(element => {
 
   Pour voir plus en détail les champs, je vous invite à regarder les migrations de laravel dans le dossier [database/migrations](https://github.com/teh0/exercice_infomaniak/tree/master/library_application/database/migrations)
 
-* Les Contrôleurs (ceux que j'ai créé)
+* **Les Contrôleurs** (ceux que j'ai créés ou modifiés)
 
   | Contrôleurs | Rôle                                                                      |
   |-------------|---------------------------------------------------------------------------|
@@ -330,17 +330,17 @@ Voici un tableau récapitulatif de toutes les routes de l'application
 ```
 ## Le front dynamique
 
-Laravel possède le moteur de template [Blade](https://laravel.com/docs/5.8/blade). Il permet d'effectuer facilement des conditions d'affichages dans les vues grâces à **des directives conditionnelles**. Voici un exemple avec l'affichage des thumbnails des livres :
+Laravel possède le moteur de template [Blade](https://laravel.com/docs/5.8/blade). Il permet d'effectuer facilement des conditions d'affichages dans les vues grâces à *des directives conditionnelles*. Voici un exemple avec l'affichage des thumbnails des livres :
 
 ```php
 <img src="@if($book->fromApi) {{ $book->large_thumbnail }} @else {{ asset('upload/thumbnails').'/'.$book->large_thumbnail }} @endif" alt="Page de couverture du livre {{ $book->title }}">
 ```
-Dans cet exemple, on peut voir 3 directives de Blade :
+Dans cet exemple, on peut voir *3 directives de Blade* :
 * ```@if @else``` qui permet d'afficher ou non des éléments en fonction de la condition.
 * ```{{ asset('...').'/'}}``` qui permet de récupérer le chemin absolue du dossier public du site.
 * ```{{ $book->title }}``` qui permet d'afficher une variable injectée dans la vue grâce au contrôleur.
 
-Il existe aussi des directives très pratiques pour afficher du contenu en fonction de l'état d'authentification de l'utilsateur. On peut prendre l'exemple avec l'affichage du bouton "Editer le livre" dans la fiche descriptif de chaque livre :
+Il existe aussi des directives très pratiques pour afficher du contenu en fonction de **l'état d'authentification** de l'utilsateur. On peut prendre l'exemple avec l'affichage du bouton "Editer le livre" dans la fiche descriptif de chaque livre :
 
 ```php
 @auth
@@ -352,7 +352,7 @@ Il existe aussi des directives très pratiques pour afficher du contenu en fonct
 ```
 Le lien ne s'affiche que si l'utilisateur **est connecté et possède le rôle admin**
 
-## Gestion des images avec le module Intervention
+## Gestion des images avec le module Intervention Image
 
 Lors de la création d'un livre ou de la modification de l'image de profil d'utilisateur, il faut **créer une image puis la stocker dans le dossier uploads du site**. J'ai choisi d'utiliser [Intervention Image](http://image.intervention.io/). C'est une librairie PHP qui permet de manipuler les images.
 
