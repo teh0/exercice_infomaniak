@@ -89,7 +89,7 @@ Pour l'organisation des données, il y aura 4 tables différentes :
 Le fichier ```server.js``` est le noyaux de l'application. Il va permettre de lier toutes les parties grâce à **Express**. Il va initialiser le moteur de template EJS, utiliser le fichier ```index.js``` du dossier routes pour assurer les liens entre les pages et va rendre les différentes vues ```.ejs``` en front.
 
 # Compte rendu technique de l'exercice
-Avant d'aller plus loin dans les explications, voici un **scénario d'utilisation** pour faire le tour des fonctionnalités de l'application Borrowell.
+Avant d'aller plus loin dans les explications techniques, voici un **scénario d'utilisation** pour faire le tour des fonctionnalités de l'application Borrowell.
 
 Rendez-vous sur l'application à l'adresse [https://borrowell.championtheo.fr](https://borrowell.championtheo.fr).
   
@@ -97,9 +97,9 @@ Rendez-vous sur l'application à l'adresse [https://borrowell.championtheo.fr](h
 
   * Vous pouvez utiliser la barre de recherche.
   * Cliquez sur le bouton "voir tous les livres".
-  * Sélectionner une catégorie de livre.
-  * Sélectionner un livre.
-  * Vous ne pouvez pas emprunter de livres. Pour pouvoir le faire, **créez-vous un compte**.
+  * Sélectionnez une catégorie de livre.
+  * Sélectionnez un livre.
+  * Vous ne pouvez pas emprunter de livres. Pour pouvoir le faire, [créez-vous un compte](https://borrowell.championtheo.fr/login).
   
 ### 2. Navigation en mode Authentifié
   * Vous pouvez vous rendre sur votre espace utilisateur pour modifier votre image de profil.
@@ -107,7 +107,7 @@ Rendez-vous sur l'application à l'adresse [https://borrowell.championtheo.fr](h
   * Depuis votre espace profil, vous pouvez rendre un livre que vous avez emprunté.
   
 ### 3. Navigation en mode Libraire
-  Pour cette partie, il faut vous connecter avec un compte libraire :
+  Pour cette partie, il faut vous connecter avec un compte libraire. Voici le mien :)
   ```js
   let libraire = {
     email: "tochampion38@gmail.com",
@@ -121,27 +121,27 @@ Rendez-vous sur l'application à l'adresse [https://borrowell.championtheo.fr](h
 # Partie Technique
 
 **Outil NodeJs**
-1. [Structure de l'outil]()
-2. [La récupération des données de l’API GoogleBooks]()
-3. [Traitement des données]()
-4. [Injections des données dans la BDD]()
+1. [Structure de l'outil](#structure-de-loutil)
+2. [La récupération des données de l’API GoogleBooks](#la-récupération-des-données-de-lapi-googlebooks)
+3. [Traitement des données](#traitement-des-données)
+4. [Injections des données dans la BDD](#injections-des-données-dans-la-bdd)
 
 **Application Laravel**
-1. [Structure de l'application]()
-2. [Les routes]()
-3. [Le front dynamique]()
-4. [Gestion des images avec le module Intervention]()
+1. [Structure de l'application](#structure-de-lapplication)
+2. [Les routes](#les-routes)
+3. [Le front dynamique](#le-front-dynamique)
+4. [Gestion des images avec le module Intervention](#gestion-des-images-avec-le-module-intervention)
 
 # [Outil NodeJs] 
 
-# Structure de l'outil
+## Structure de l'outil
 
-La structure de l'application est quasiment la même que celle énoncée dans la note d'intention. On rappelle que cet outil à pour but de peupler rapidement la table de donnée de la plateforme de livre à partir des données récupérées sur l'API Google Book.
+La structure de l'application est quasiment la même que celle énoncée dans la note d'intention. On rappelle que cet outil à pour but de peupler rapidement et facilement la base de donnée de la plateforme de livre à partir des données récupérées sur l'API Google Book.
 [Voici une **démonstration vidéo** du résultat de l'outil]().
 
-# La récupération des données de l’API GoogleBooks
+## La récupération des données de l’API GoogleBooks
 
-J'ai restreints la recherche de livres à 6 catégorie différentes : PHP, HTML, CSS, JavaScript, Python, NodeJs. Comme vous avez pu le voir sur le [vidéo](), je peux les choisir avec un bouton select
+J'ai restreint la recherche de livres à 6 catégories différentes : PHP, HTML, CSS, JavaScript, Python, NodeJs. Comme vous avez pu le voir sur le [vidéo](), je peux les choisir avec un bouton select
 
 ```html
 <form action="" method="POST">
@@ -156,23 +156,23 @@ J'ai restreints la recherche de livres à 6 catégorie différentes : PHP, HTML,
     <button type="submit">Choisir</button>
 </form>
 ```
-A la soumission du formulaire, je récupère le paramètre ```category``` grâce à express et je fais uen requête sur l'api grâce à [Axios](https://www.npmjs.com/package/axios).
+A la soumission du formulaire, je récupère le paramètre ```category``` grâce à [Express](https://www.npmjs.com/package/express) et je fais une requête sur l'API avec [Axios](https://www.npmjs.com/package/axios).
 ```js
     app.post('/', function (req, res) {
         category = req.body.category;
         ...
     }
 ```
-Ainsi, la requête est dynamique en fonction du choix de l'utilisateur.
+Ainsi, la requête est dynamique en **fonction du choix de l'utilisateur**.
 
-# Traitement des données
+## Traitement des données
 
-Une fois les données récupérées, il faut effectuer des traitements et des filtres afin d'injecter seulement les livres qui respectent certaines conditions : 
-  * Le livre doit posseder une description, un auteur, une miniature, un titre, un nombre de page, une langue. Autrement dit, il ne faut pas que ces champs soit vides (NULL).
+Une fois les données récupérées, il faut effectuer des traitements et des filtres afin d'injecter seulement les livres qui **respectent certaines conditions** : 
+  * Le livre doit posséder une description, un auteur, une miniature, un titre, un nombre de page, une langue. Autrement dit, il ne faut pas que ces champs soit vides (NULL).
   * Le livre ne doit pas être présent dans la base de donnée.
 
 Pour se faire j'ai décomposé le traitement en 3 étapes : 
-### 1. On créé un tableau d'objets comportant chaque livre de la requête en ne gardant que les propriétés qui nous interesse
+#### 1. On créé un tableau d'objets comportant chaque livre de la requête en ne gardant que les propriétés qui nous interesse
 
   ```js
   //dataBooks is the result of all books retrieved from Axios
@@ -191,7 +191,7 @@ Pour se faire j'ai décomposé le traitement en 3 étapes :
   });
   ```
 
-### 2. On filtre les livres dont toutes les propriétés sont présentes et non NULL et on les stock dans un tableau ```listValidBooks```
+#### 2. On filtre les livres dont toutes les propriétés sont présentes et non NULL et on les stock dans un tableau ```listValidBooks```
 
   ```js
   // If a value of props is undefined or total props number != 7, we don't keep the book
@@ -220,7 +220,7 @@ Pour se faire j'ai décomposé le traitement en 3 étapes :
       }
   });
   ```
-# Injections des données dans la BDD
+## Injections des données dans la BDD
 
 Pour se connecter à la base de donnée locale de la plateforme, j'ai utilisé [Mysql](https://www.npmjs.com/package/mysql).
 Il faut d'abord se connecter avec la BDD :
@@ -236,7 +236,7 @@ const connection = mysql.createConnection({
 connection.connect();
 ``` 
 
-A partir de cette connection, on peut effectuer n'importe quel traitement sur la base de donnée. J'ai donc inséré dans la BDD le contenu de mon tableau ```listNewBooksStored``` comportant tous les livres valides.
+A partir de cette connexion, on peut effectuer n'importe quel traitement sur la base de donnée. J'ai donc inséré dans la BDD le contenu de mon tableau ```listNewBooksStored``` comportant tous les livres valides.
 
 ```js
 listValidBooks.forEach(element => {
@@ -251,9 +251,9 @@ listValidBooks.forEach(element => {
 ```
 # [Application Laravel] 
 
-# Structure de l'application 
+## Structure de l'application 
 
-Laravel est un framework très complet. Je ne vais donc pas détailler toutes la structure du framework mais plutôt de l'organisation Model Vue Controlleurs mise en place.
+[Laravel](https://laravel.com/) est un framework très complet. Je ne vais donc pas détailler toute la structure du framework mais plutôt de l'organisation **Modèle Vue Contrôleur** mise en place.
 
 * **Les Vues**
 
@@ -264,8 +264,8 @@ Laravel est un framework très complet. Je ne vais donc pas détailler toutes la
   | admins    | Vues du back-office                                                           |
   | auth      | Vues pour la gestion d'authentification (natives à Laravel)                   |
   | books     | Vues pour l'affichage et l'éditions des livres                                |
-  | partials  | Composants de vue à insérer dans d'autres vues (header, footer, sideMenu ...) |
-  | templates | Modèle de page pour toutes les vues                                           |
+  | partials  | Morceaux de vue à insérer dans d'autres vues (header, footer, sideMenu ...)   |
+  | templates | Modèle de page communes toutes les vues                                       |
   | users     | Vue pour le profil utilisateur                                                |
 
   Pour le dossier Scss, j'ai repris la même organisation pour une question de cohérence.
@@ -273,11 +273,11 @@ Laravel est un framework très complet. Je ne vais donc pas détailler toutes la
 * Les Models
 
   Il y a 3 tables différentes
-  * Book
+  * Books
   * Users
-  * Category
+  * Categories
 
-  Pour voir plus en détail les champs, je vous invite à regarder les migrations de laravel ```database/migrations```
+  Pour voir plus en détail les champs, je vous invite à regarder les migrations de laravel dans el dossier [database/migrations](https://github.com/teh0/exercice_infomaniak/tree/master/library_application/database/migrations)
 
 * Les Contrôleurs (ceux que j'ai créé)
 
@@ -288,9 +288,9 @@ Laravel est un framework très complet. Je ne vais donc pas détailler toutes la
   | Books       | Gère l'affichage et les traitements des livres (logique CRUD)             |
   | Category    | Gère la logique de regroupement des livre à l'affichage                   |
 
-# Les routes
+## Les routes
 
-Vous pouvez retrouver toutes les routes dans le fichier ```web.php```
+Vous pouvez retrouver toutes les routes dans le fichier [web.php](https://github.com/teh0/exercice_infomaniak/blob/master/library_application/routes/web.php)
 Voici un tableau récapitulatif de toutes les routes de l'application
 
 ```bash
@@ -324,9 +324,9 @@ Voici un tableau récapitulatif de toutes les routes de l'application
 |        | POST     | user/profile                           | update_avatar    | App\Http\Controllers\UsersController@update_avatar                     | web,auth     |
 +--------+----------+----------------------------------------+------------------+------------------------------------------------------------------------+--------------+
 ```
-# Le front dynamique
+## Le front dynamique
 
-Laravel possède le moteur de template [Blade](https://laravel.com/docs/5.8/blade). Il permet d'effectuer facilement des conditions d'affichages dans les vues grâces à des directives conditionnelles. Voici un exemple avec l'affichage des thumbnails des livres :
+Laravel possède le moteur de template [Blade](https://laravel.com/docs/5.8/blade). Il permet d'effectuer facilement des conditions d'affichages dans les vues grâces à **des directives conditionnelles**. Voici un exemple avec l'affichage des thumbnails des livres :
 
 ```php
 <img src="@if($book->fromApi) {{ $book->large_thumbnail }} @else {{ asset('upload/thumbnails').'/'.$book->large_thumbnail }} @endif" alt="Page de couverture du livre {{ $book->title }}">
@@ -336,7 +336,7 @@ Dans cet exemple, on peut voir 3 directives de Blade :
 * ```{{ asset('...').'/'}}``` qui permet de récupérer d'obtenir le chemin absolue du dossier public du site
 * ```{{ $book->title }}``` qui permet d'afficher une variable injectée dans la vue grâce au contrôleur
 
-Il existe aussi des directives très pratiques pour afficher du contenu en fonction de l'état d'authentification de l'utilsateur. On peut prendre l'exemple avec l'affichage du bouton "Editer le livre" dans la foche descriptif de chaque livre :
+Il existe aussi des directives très pratiques pour afficher du contenu en fonction de l'état d'authentification de l'utilsateur. On peut prendre l'exemple avec l'affichage du bouton "Editer le livre" dans la fiche descriptif de chaque livre :
 
 ```php
 @auth
@@ -346,11 +346,11 @@ Il existe aussi des directives très pratiques pour afficher du contenu en fonct
     @endif
 @endauth
 ```
-Le lien ne s'affiche que si l'utilisateur est connecté et possède le rôle admin
+Le lien ne s'affiche que si l'utilisateur **est connecté et possède le rôle admin**
 
-# Gestion des images avec le module Intervention
+## Gestion des images avec le module Intervention
 
-Lors de la création d'un livre ou de la modification de l'image de profil d'utilisateur, il faut créer une image pour pouvoir la stocker dans le dossier uploads du site. J'ai choisi d'utiliser [Intervention Image](http://image.intervention.io/). C'est une librairie PHP permettant de manipuler les images. On peut effectuer tout un tas de traitements solides avec. 
+Lors de la création d'un livre ou de la modification de l'image de profil d'utilisateur, il faut créer une image puis la stocker dans le dossier uploads du site. J'ai choisi d'utiliser [Intervention Image](http://image.intervention.io/). C'est une librairie PHP qui permet de manipuler les images.
 
 Voici un exemple d'utilisation de la librairie dans un contrôleur
 ```php
@@ -363,4 +363,5 @@ Image::make($data_large_thumbnail)->save( public_path('/upload/thumbnails/'.$nam
 Image::make($data_large_thumbnail)->resize(128,181)->save( public_path('/upload/thumbnails/'.$name_small_thumbnail) );
 $book->large_thumbnail = $name_large_thumbnail;
 $book->small_thumbnail = $name_small_thumbnail;
+$book->save();
 ```
