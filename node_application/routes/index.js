@@ -63,7 +63,7 @@ module.exports = function (app) {
 
                         };
                         if (element.volumeInfo.imageLinks) {
-                            newdataBook.small_thumbnail = element.volumeInfo.imageLinks.thumbnail;
+                            newdataBook.small_thumbnail = element.volumeInfo.imageLinks.thumbnail.replace("http", "https");
                         }
                         // If a value of props is undefined or total props number != 7, we don't keep the book
                         if (Object.values(newdataBook).length === 6 && !Object.values(newdataBook).includes(undefined)) {
