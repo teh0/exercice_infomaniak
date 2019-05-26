@@ -124,7 +124,7 @@ Rendez-vous sur l'application à l'adresse [https://borrowell.championtheo.fr](h
 1. [Structure de l'outil](#structure-de-loutil)
 2. [La récupération des données de l’API GoogleBooks](#la-récupération-des-données-de-lapi-googlebooks)
 3. [Traitement des données](#traitement-des-données)
-4. [Injections des données dans la BDD](#injections-des-données-dans-la-bdd)
+4. [Injection des données dans la BDD](#injection-des-données-dans-la-bdd)
 
 **Application Laravel**
 1. [Structure de l'application](#structure-de-lapplication)
@@ -137,11 +137,11 @@ Rendez-vous sur l'application à l'adresse [https://borrowell.championtheo.fr](h
 ## Structure de l'outil
 
 La structure de l'application est quasiment la même que celle énoncée dans la note d'intention. On rappelle que cet outil à pour but de peupler rapidement et facilement la base de donnée de la plateforme de livre à partir des données récupérées sur l'API Google Book.
-[Voici une **démonstration vidéo** du résultat de l'outil]().
+[Voici une **démonstration vidéo** du résultat de l'outil](https://www.youtube.com/watch?v=fga4MmZZMuY&feature=youtu.be).
 
 ## La récupération des données de l’API GoogleBooks
 
-J'ai restreint la recherche de livres à 6 catégories différentes : PHP, HTML, CSS, JavaScript, Python, NodeJs. Comme vous avez pu le voir sur le [vidéo](), je peux les choisir avec un bouton select
+J'ai restreint la recherche de livres à 6 catégories différentes : PHP, HTML, CSS, JavaScript, Python, NodeJs. Comme vous avez pu le voir sur la [vidéo](https://www.youtube.com/watch?v=fga4MmZZMuY&feature=youtu.be), je peux les choisir avec un bouton select
 
 ```html
 <form action="" method="POST">
@@ -158,10 +158,14 @@ J'ai restreint la recherche de livres à 6 catégories différentes : PHP, HTML,
 ```
 A la soumission du formulaire, je récupère le paramètre ```category``` grâce à [Express](https://www.npmjs.com/package/express) et je fais une requête sur l'API avec [Axios](https://www.npmjs.com/package/axios).
 ```js
-    app.post('/', function (req, res) {
-        category = req.body.category;
-        ...
-    }
+app.post('/', function (req, res) {
+    let category = req.body.category;
+    ...
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${category}&maxResults=40`)
+    .then(function (response) {
+      ...
+    });
+}
 ```
 Ainsi, la requête est dynamique en **fonction du choix de l'utilisateur**.
 
@@ -169,7 +173,7 @@ Ainsi, la requête est dynamique en **fonction du choix de l'utilisateur**.
 
 Une fois les données récupérées, il faut effectuer des traitements et des filtres afin d'injecter seulement les livres qui **respectent certaines conditions** : 
   * Le livre doit posséder une description, un auteur, une miniature, un titre, un nombre de page, une langue. Autrement dit, il ne faut pas que ces champs soit vides (NULL).
-  * Le livre ne doit pas être présent dans la base de donnée.
+  * Le livre ne doit pas être déjà présent dans la base de donnée.
 
 Pour se faire j'ai décomposé le traitement en 3 étapes : 
 #### 1. On créé un tableau d'objets comportant chaque livre de la requête en ne gardant que les propriétés qui nous interesse
@@ -191,7 +195,7 @@ Pour se faire j'ai décomposé le traitement en 3 étapes :
   });
   ```
 
-#### 2. On filtre les livres dont toutes les propriétés sont présentes et non NULL et on les stock dans un tableau ```listValidBooks```
+#### 2. On filtre les livres dont toutes les propriétés sont présentes et sont non NULL et on les stock dans un tableau ```listValidBooks```
 
   ```js
   // If a value of props is undefined or total props number != 7, we don't keep the book
@@ -203,7 +207,7 @@ Pour se faire j'ai décomposé le traitement en 3 étapes :
 ### 3. On vérifie si le livre n'est pas déjà présent dans la base de donnée de la librairie. Pour cela, on compare le titre et la description de chaque livre de la BDD avec ceux récupérés dans la requête Axios
 
   ```js
-  // If a value of props is undefined or total props number != 7, we don't keep the book
+  // If a value of props is undefined or total props number != 6, we don't keep the book
   let listTitleBookStored = [];
   let listDescriptionBookStored = [];
   let listNewBooksStored = [];
@@ -220,7 +224,7 @@ Pour se faire j'ai décomposé le traitement en 3 étapes :
       }
   });
   ```
-## Injections des données dans la BDD
+## Injection des données dans la BDD
 
 Pour se connecter à la base de donnée locale de la plateforme, j'ai utilisé [Mysql](https://www.npmjs.com/package/mysql).
 Il faut d'abord se connecter avec la BDD :
@@ -257,7 +261,7 @@ listValidBooks.forEach(element => {
 
 * **Les Vues**
 
-  Les vues sont organisées en 6 parties
+  Les vues sont organisées en **6 parties**
 
   | Parties   | Description                                                                   |
   |-----------|-------------------------------------------------------------------------------|
@@ -270,14 +274,14 @@ listValidBooks.forEach(element => {
 
   Pour le dossier Scss, j'ai repris la même organisation pour une question de cohérence.
 
-* Les Models
+* Les Modèles
 
   Il y a 3 tables différentes
   * Books
   * Users
   * Categories
 
-  Pour voir plus en détail les champs, je vous invite à regarder les migrations de laravel dans el dossier [database/migrations](https://github.com/teh0/exercice_infomaniak/tree/master/library_application/database/migrations)
+  Pour voir plus en détail les champs, je vous invite à regarder les migrations de laravel dans le dossier [database/migrations](https://github.com/teh0/exercice_infomaniak/tree/master/library_application/database/migrations)
 
 * Les Contrôleurs (ceux que j'ai créé)
 
@@ -332,9 +336,9 @@ Laravel possède le moteur de template [Blade](https://laravel.com/docs/5.8/blad
 <img src="@if($book->fromApi) {{ $book->large_thumbnail }} @else {{ asset('upload/thumbnails').'/'.$book->large_thumbnail }} @endif" alt="Page de couverture du livre {{ $book->title }}">
 ```
 Dans cet exemple, on peut voir 3 directives de Blade :
-* ```@if @else``` qui permet d'afficher ou non des élements en fonction de la condition.
-* ```{{ asset('...').'/'}}``` qui permet de récupérer d'obtenir le chemin absolue du dossier public du site
-* ```{{ $book->title }}``` qui permet d'afficher une variable injectée dans la vue grâce au contrôleur
+* ```@if @else``` qui permet d'afficher ou non des éléments en fonction de la condition.
+* ```{{ asset('...').'/'}}``` qui permet de récupérer le chemin absolue du dossier public du site.
+* ```{{ $book->title }}``` qui permet d'afficher une variable injectée dans la vue grâce au contrôleur.
 
 Il existe aussi des directives très pratiques pour afficher du contenu en fonction de l'état d'authentification de l'utilsateur. On peut prendre l'exemple avec l'affichage du bouton "Editer le livre" dans la fiche descriptif de chaque livre :
 
@@ -350,7 +354,7 @@ Le lien ne s'affiche que si l'utilisateur **est connecté et possède le rôle a
 
 ## Gestion des images avec le module Intervention
 
-Lors de la création d'un livre ou de la modification de l'image de profil d'utilisateur, il faut créer une image puis la stocker dans le dossier uploads du site. J'ai choisi d'utiliser [Intervention Image](http://image.intervention.io/). C'est une librairie PHP qui permet de manipuler les images.
+Lors de la création d'un livre ou de la modification de l'image de profil d'utilisateur, il faut **créer une image puis la stocker dans le dossier uploads du site**. J'ai choisi d'utiliser [Intervention Image](http://image.intervention.io/). C'est une librairie PHP qui permet de manipuler les images.
 
 Voici un exemple d'utilisation de la librairie dans un contrôleur
 ```php
